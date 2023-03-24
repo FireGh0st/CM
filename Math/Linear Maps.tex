@@ -1,0 +1,93 @@
+\documentclass[notitlepage]{math}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\title{Linear Maps Chap. 12} %Titre du fichie
+\author{FireGhost} %Auteur du fichier
+
+\begin{document}
+\titre{Chapter 12: Linear Maps} %Titre du fichier .pdf
+\UE{Linear Maps} %Nom de la UE
+
+\fairetitre
+\tableofcontents
+\fairemarges
+% subsubsubsection
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%
+\section{General approach}
+\subsection{Definition}
+Let $E,F$ two $\mathbb{K}-VS$, and $f$ a mapping from $E$ to $F$.
+We say that $f$ is a linear (or $f$ is a linear map) if:
+\[ \forall (\alpha,X,Y)\in \mathbb{K} \times E \times E, f(\alpha \cdot X + Y) = \alpha \cdot f(X) + f(Y)\]
+\[  \Longleftrightarrow  \]
+\[  \forall (\alpha,\beta,X,Y)\in \mathbb{K} \times \mathbb{K} \times E \times E, f(\alpha \cdot X + \beta \cdot Y) = \alpha \cdot f(X) + \beta \cdot f(Y)\]
+\subsection{Notation}
+We denote $L(E,F)$ the set of all linear maps from $E$ to $F$.
+\subsection{Specific Linear Maps}
+\subsubsection{Definition}
+\begin{enumerate}
+    \item Let $f \in \mathcal{L}(E,F)$: we say $f$ is an endomorphism if $E = F$ we then denote $\mathcal{L}(E)$ the set of all endomorphism of $E$. 
+    \item Let $f \in \mathcal{L}(E,F)$: we say $f$ is an isomorphism if $f$ is bijective.
+    \item Let $f \in \mathcal{L}(E,F)$: we say $f$ is an automorphism if $f$ is an endomorphism and an isomorphism. ($E = F$ and bijective)
+\end{enumerate}
+\subsection{Necessary Condition}
+\[ f \in \mathcal{L}(E,F) \Longrightarrow f(0_E)=0_F\]
+\subsubsection{Proof}
+\begin{align*}
+    \text{Let } &X \in E &\text{ and }  && X \in& E.\\
+    f(0_E) &= f(0_R \times X)  &\text{ and } && f(0_E) =& f(X - X) \\
+    f(0_E) &= 0_R \times f(X) &\text{ and } && f(0_E) =& f(X) - f(X) \\
+    f(0_E) &= 0_F &\text{ and } && f(0_E) =& 0_F
+\end{align*}
+\section{Kernel and Images}
+\subsection{Definition}
+Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
+\begin{enumerate}
+    \item We call kernel of $f$ and denote $Ker(f)$ the subset of $E$ defined as follows: 
+    \[ Ker(f) = \{X \in E \mid f(X) = 0_F\} = f^{-1}(\{0_F\})\]
+    \textit{Note: $f^{-1}()$ is NOT the inverse of $f$ beacause $f$ is not necessarily bijective.}
+    \item We call image of $f$ and denote $Im(f)$ the subset of $F$ defined as follows:
+    \[ Im(f) = \{f(X), X \in E\}=\{Y \in F, \exists X \in E, f(X) = Y\}\]
+\end{enumerate}
+\subsection{Example}
+\begin{minipage}{0.60\linewidth}
+    \begin{tikzpicture}[node distance=1mm]
+        \node (functionName) at (0, 0) {$f$:};
+        \node[right = of functionName] (domain) {$R^2$};
+        \node[right = 1cm of domain] (codomain) {$R^3$};
+        \node[below = 2mm of domain] (element) {$\begin{pmatrix}
+                x \\
+                y
+            \end{pmatrix}$};
+        \node at (element-|codomain) (image) {$\begin{pmatrix}
+                x \\
+                0 \\
+                y
+            \end{pmatrix}$};
+        \draw[->] (domain) -- (codomain);
+        \draw[|->] (element) -- (image);
+    \end{tikzpicture}
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\linewidth}
+    \begin{enumerate}
+        \item $f \in \mathcal{L}(R^2,R^3) ?$
+        \item Kerf = ?
+        \item Imf = ?
+    \end{enumerate}
+\end{minipage}
+\begin{enumerate}
+    \item Necessary condition: $f(0_{E}) = 0_{F}$ : 
+    $f(0_{R^2}) = \begin{pmatrix} 0 \\ 0 \end{pmatrix} 
+    \rightarrow \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$ ?
+    \[\forall (\alpha, X, Y) \in \mathbb{R} \times  \mathbb{R}^2 \times \mathbb{R}^2, X = \begin{pmatrix} x \\ y \end{pmatrix} \text{ and } Y = \begin{pmatrix} x' \\ y' \end{pmatrix}, x,y,x',y' \in \mathbb{R}\]
+    
+\end{enumerate}
+\end{document}
