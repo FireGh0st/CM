@@ -34,23 +34,26 @@
 \newcommand{\UE}[1]{\renewcommand{\UE}{#1}}
 \newcommand{\titre}[1]{\renewcommand{\titre}{#1}}
 
-% \newcommand{\eleves}[1]{\renewcommand{\eleves}{#1}}
+
 
 \newcommand{\fairemarges}{
-\makenomenclature
-\pagestyle{fancy}
-\fancyheadoffset{1cm}
-\setlength{\headheight}{2cm}
-%\lhead{\includegraphics[scale=0.065]{logos/SIS.png}} %Affichage de l'image au top de la page
-\rhead{\nouppercase{\leftmark}}
-\rfoot{\thepage}
-\cfoot{\UE \space - \textbf{\titre}}
+	\makenomenclature
+	\pagestyle{fancy}
+	\fancyheadoffset{1cm}
+	\setlength{\headheight}{2cm}
+	%\lhead{\includegraphics[scale=0.065]{logos/SIS.png}} %Affichage de l'image au top de la page
+	\rhead{\nouppercase{\leftmark}}
+	\lhead{Mathematics}
+	\rfoot{\thepage}
+	\cfoot{\textbf{\titre}}
 
 }
 
 \newcommand{\fairetitre}{
+	
 \begin{titlepage}
 
+	
 	\centering %Centraliser le contenu
 	%\includegraphics[width=0.5\textwidth]{logos/SIS.png}\par\vspace{1cm} %Insertion du logo
 	\vspace{1.5cm}%Espace de 1,5cm
@@ -58,7 +61,7 @@
 	\vspace{0.25cm}%Espace de 1cm
 	{\large \today\par} %Affichage de la date
 	%\vspace{0.5cm}%Espace de 1cm
-    \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+    \rule{\linewidth}{0.5 mm} \\[0.4 cm]
     % \rule{\linewidth}{0.2 mm} \\[1.5 cm]
 	% \vspace{1cm}%Espace de 3cm
     
@@ -74,6 +77,7 @@
 	% \vfill
 	
 
+	\@starttoc{toc}
 \end{titlepage}
 }
 
