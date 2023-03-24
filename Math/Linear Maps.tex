@@ -1,7 +1,10 @@
 \documentclass[notitlepage]{math}
 \usepackage{lipsum}
 \usepackage{tikz}
+\usepackage{enumitem}
 \usetikzlibrary{positioning}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \title{Linear Maps Chap. 12} %Titre du fichie
 \author{FireGhost} %Auteur du fichier
 
@@ -49,6 +52,7 @@ We denote $L(E,F)$ the set of all linear maps from $E$ to $F$.
 \section{Kernel and Images}
 \subsection{Definition}
 Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
+
 \begin{enumerate}
     \item We call kernel of $f$ and denote $Ker(f)$ the subset of $E$ defined as follows: 
     \[ Ker(f) = \{X \in E \mid f(X) = 0_F\} = f^{-1}(\{0_F\})\]
@@ -77,17 +81,18 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\linewidth}
-    \begin{enumerate}
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
         \item $f \in \mathcal{L}(R^2,R^3) ?$
         \item Kerf = ?
         \item Imf = ?
     \end{enumerate}
 \end{minipage}
-\begin{enumerate}
+\begin{enumerate}[label=\protect\circled{\arabic*}]
     \item Necessary condition: $f(0_{E}) = 0_{F}$ : 
     $f(0_{R^2}) = \begin{pmatrix} 0 \\ 0 \end{pmatrix} 
     \rightarrow \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$ ?
     \[\forall (\alpha, X, Y) \in \mathbb{R} \times  \mathbb{R}^2 \times \mathbb{R}^2, X = \begin{pmatrix} x \\ y \end{pmatrix} \text{ and } Y = \begin{pmatrix} x' \\ y' \end{pmatrix}, x,y,x',y' \in \mathbb{R}\]
-    
+    \[f(\alpha \cdot X + Y) = \begin{pmatrix} \alpha \cdot x + x' \\ \alpha \cdot y + y' \end{pmatrix} = \begin{pmatrix} \alpha \cdot x + x' \\ 0 \\ \alpha \cdot y + y' \end{pmatrix} = \alpha \cdot \begin{pmatrix} x \\ 0 \\ y \end{pmatrix} + \begin{pmatrix} x' \\ 0 \\ y' \end{pmatrix} = \alpha \cdot f(X) + f(Y)\]
+    so \circled{1} $f \in \mathcal{L}(R^2,R^3)$ \checkmark
 \end{enumerate}
 \end{document}
