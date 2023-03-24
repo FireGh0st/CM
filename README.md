@@ -1,1 +1,2 @@
 # CM
+Cours magistraux

@@ -1,0 +1,193 @@
+\documentclass{math}
+\usepackage{lipsum}
+\title{Matrix Chap. 13} %Titre du fichie
+\author{FireGhost} %Auteur du fichier
+
+\begin{document}
+\titre{Chapter 13: Matrix} %Titre du fichier .pdf
+\UE{Matrix} %Nom de la UE
+
+
+\fairetitre
+\tableofcontents
+\fairemarges
+\newpage
+% subsubsubsection
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%
+\section{General approach}
+\subsection{Definition}
+\subsubsection{Definition of a matrix}
+We call matrix of n rows and p columns any mapping in the following form:
+\[\begin{matrix}
+    \llbracket 1,n \rrbracket \times \llbracket 1,p \rrbracket & \rightarrow \mathbb{K} \\
+    i,j &  a_{ij} 
+\end{matrix}\]
+
+We denote such maps as tables of n rows and p columns, and we write:
+
+\[\begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1p} \\
+    a_{21} & a_{22} & \cdots & a_{2p} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix}\]
+
+$\forall(i,j)\in \llbracket 1,n \rrbracket \times \llbracket 1,p \rrbracket$, we call $a_{ij}$ a coefficient of the matrix.
+In this case coefficient if i-th row and j-th column.
+
+\subsubsection{Notation}
+We denote $M_{np}(\mathbb{K})$ the set of matrix of n rows and p columns with coefficient from $\mathbb{K}$.
+\subsubsection{Examples}
+%centering example
+
+\[ A = \begin{pmatrix}
+    1 & 4  \\
+    2 & 5 \\
+    3 & 6 
+\end{pmatrix}\in M_{32}(\mathbb{R})\]
+\[
+B = \begin{pmatrix}
+    i \\
+    1 + i \\
+    3
+\end{pmatrix}\in M_{31}(\mathbb{C})\]
+
+\subsection{Particular matrices}
+Let $A \in M_{np}(\mathbb{K})$ then:
+\subsubsection{Null matrix}
+\begin{enumerate}
+    \item  $\lbrack \forall (i,j) \in \llbracket 1,n \rrbracket \times \llbracket 1,p \rrbracket, a_{ij} = 0 \rbrack \Rightarrow \lbrack A = 0_{np} \rbrack$
+    We say A is the null matrix $M_{np}(\mathbb{K})$.
+\end{enumerate}
+\paragraph{Example}
+\[ A'=
+\begin{pmatrix}
+    0 & 0  \\
+    0 & 0  \\
+    0 & 0 
+\end{pmatrix}\in M_{32}(\mathbb{R})\]
+
+\subsubsection{Column matrix}
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item $B \in M_{np}(\mathbb{K})$ and $ p = 1 \Rightarrow $ B is a column matrix of n rows
+\end{enumerate}
+\paragraph{Example}
+\[ B' = \begin{pmatrix}
+    1 \\
+    2 \\
+    3
+\end{pmatrix} \in M_{31}(\mathbb{R})\]
+
+\subsubsection{Row matrix}
+    \begin{enumerate}
+        \setcounter{enumi}{2}
+        \item $B \in M_{np}(\mathbb{K})$ and $ n = 1 \Rightarrow $ C is a row matrix of p columns
+    \end{enumerate}
+    \paragraph{Example}
+    \[ C' = \begin{pmatrix}
+        1 & 2 & 3
+    \end{pmatrix} \in M_{13}(\mathbb{R})\]
+
+\subsubsection{Square matrix}
+    We call square matrix any matrix with same number of rows and columns.
+    We denote $M_{n}(\mathbb{K})$ the set of square matrix of n rows and columns with coefficient from $\mathbb{K}$.
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item $D \in M_{np}(\mathbb{K})$ and $ n = p \Rightarrow $ D is a square matrix denote $M_{n}(\mathbb{K})$
+    \end{enumerate}
+    \paragraph{Example}
+    \[ D' = \begin{pmatrix}
+        1 & 2 & 3 \\
+        4 & 5 & 6 \\
+        7 & 8 & 9
+    \end{pmatrix} \in M_{3}(\mathbb{R})\]
+
+\subsubsection{Diagonal matrix}
+    \begin{enumerate}
+        \setcounter{enumi}{4}
+        \item $\forall E \in M_{n}(\mathbb{R})$, if $\forall (i,j) \in \llbracket 1,n \rrbracket ^2, i \neq j \Rightarrow a_{ij} = 0$ then we say E is a diagonal matrix
+    \end{enumerate}
+    \paragraph{Example}
+    \[ E' = \begin{pmatrix}
+        1 & 0 \\
+        0 & 2
+    \end{pmatrix} \in M_{2}(\mathbb{R})\]
+    \[ E'' = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 0 & 3
+    \end{pmatrix} \in M_{3}(\mathbb{R})\]
+
+\subsubsection{Triangular matrix}
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item $\forall F \in M_{n}(\mathbb{R})$, if $\forall (i,j) \in \llbracket 1,n \rrbracket ^2, i > j \Rightarrow a_{ij} = 0$ then we say F is a lower triangular matrix
+        \item $\forall G \in M_{n}(\mathbb{R})$, if $\forall (i,j) \in \llbracket 1,n \rrbracket ^2, i < j \Rightarrow a_{ij} = 0$ then we say G is a upper triangular matrix
+    \end{enumerate}
+    \paragraph{Example}
+    \[ F' = \begin{pmatrix}
+        1 & 0 \\
+        2 & 3
+    \end{pmatrix} \in M_{2}(\mathbb{R})\]
+    \[ G' = \begin{pmatrix}
+        1 & 2 \\
+        0 & 3
+    \end{pmatrix} \in M_{2}(\mathbb{R})\]
+
+\subsection{Transposed matrix}
+    \subsubsection{Definition}
+        Let $A \in M_{np}(\mathbb{K})$. We call transposed matrix of A (or A transpose) a matrix B from $M_{pn}(\mathbb{K})$ such as:
+        \[ \forall (i,j) \in \llbracket 1,n \rrbracket \times \llbracket 1,p \rrbracket, a_{ij} = b_{ji}\]
+    \subsubsection{Notation}
+    We denote B as ${}^t \! A$
+    \subsubsection{Example}
+    
+    \[ A = \begin{pmatrix}
+        1 & 2 & 3 \\
+        4 & 5 & 6
+    \end{pmatrix} \in M_{23}(\mathbb{R})\]
+    \[ {}^t \! A = \begin{pmatrix}
+        1 & 4 \\
+        2 & 5 \\
+        3 & 6
+    \end{pmatrix} \in M_{32}(\mathbb{R})\]
+
+
+\subsection{Symmetric matrix}
+    \subsubsection{Symmetric}
+        If $ {}^t \! A = A $ then we say A is symmetric
+        \paragraph{Example}
+        \[ A = \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 4 & 5 \\
+            3 & 5 & 6
+        \end{pmatrix} = {}^t \! A = 
+        \begin{pmatrix}
+            1 & 2 & 3 \\
+            2 & 4 & 5 \\
+            3 & 5 & 6
+        \end{pmatrix}
+            \in M_{3}(\mathbb{R})\]
+    \subsubsection{Anti-Symmetric}
+        If $ {}^t \! A = -A $ then we say A is Anti-symmetric
+        \paragraph{Example}
+        \[ A = \begin{pmatrix}
+            0 & -2 & 3 \\
+            2 & 0 & -5 \\
+            -3 & 5 & 0
+        \end{pmatrix} = {}^t \! A = 
+        \begin{pmatrix}
+            0 & 2 & -3 \\
+            -2 & 0 & 5 \\
+            3 & -5 & 0
+        \end{pmatrix}
+            \in M_{3}(\mathbb{R})\]
+\end{document}
