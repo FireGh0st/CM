@@ -13,7 +13,6 @@
 \UE{Linear Maps} %Nom de la UE
 
 \fairetitre
-\tableofcontents
 \fairemarges
 % subsubsubsection
 \setcounter{secnumdepth}{4}
@@ -43,12 +42,21 @@ We denote $L(E,F)$ the set of all linear maps from $E$ to $F$.
 \subsection{Necessary Condition}
 \[ f \in \mathcal{L}(E,F) \Longrightarrow f(0_E)=0_F\]
 \subsubsection{Proof}
-\begin{align*}
-    \text{Let } &X \in E &\text{ and }  && X \in& E.\\
-    f(0_E) &= f(0_R \times X)  &\text{ and } && f(0_E) =& f(X - X) \\
-    f(0_E) &= 0_R \times f(X) &\text{ and } && f(0_E) =& f(X) - f(X) \\
-    f(0_E) &= 0_F &\text{ and } && f(0_E) =& 0_F
-\end{align*}
+\begin{minipage}{0.4\linewidth}
+    \[\text{Let } X \in E\]
+    \[f(0_E) = f(0_E \times X)\]
+    \[f(0_E) = 0_F \times f(X)\]
+    \[f(0_E) = 0_F\]
+\end{minipage}
+\hfill\vline\hfill
+\begin{minipage}{0.49\linewidth}
+    \[\text{Let } X \in E\]
+    \[f(0_E) = f(X - X) \]
+    \[f(0_E) = f(X) - f(X) \]
+    \[f(0_E) = 0_F\]
+\end{minipage}
+
+\newpage
 \section{Kernel and Images}
 \subsection{Definition}
 Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
@@ -103,15 +111,27 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
     
 
     \item Let $f \in \mathcal{L}(E,F)$ and $g \in \mathcal{L}(F,G)$. Then: \[g \circ f \in \mathcal{L}(E,G)\]
-    \item If $f$ is objectif then $f{^{-1}}$ is bijective and $f{^{-1}} \in \mathcal{L}(F,E)$
+    \item If $f$ is bijectif then $f{^{-1}}$ is bijective and $f{^{-1}} \in \mathcal{L}(F,E)$
     \item $\mathcal{L}(E,F)$ is a $\mathbb{K}-VS$:
-            \begin{align*}
-                E &\rightarrow F \\
-                \mathcal{L}(E,F) X &\rightarrow  B_F \in \mathcal{L}(F,E)
-            \end{align*}
+        \newline
+        \begin{minipage}{0.40\linewidth}
+            
+            \begin{tikzpicture}[node distance=1mm]
+                \node (functionName) at (0, 0) {$\mathcal{L}(E,F)$:};
+                \node[right = of functionName] (domain) {$E$};
+                \node[right = 1.5cm of domain] (codomain) {$F$};
+                \node[below = 2mm of domain] (element) {$X$};
+                \node at (element-|codomain) (image) {$B_F \in \mathcal{L}(F,E)$};
+                \draw[->] (domain) -- (codomain);
+                \draw[|->] (element) -- (image);
+            \end{tikzpicture}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.59\linewidth}
             \begin{align*}
                 \forall (\alpha, f, g) \in \mathbb{K} \times &\mathcal{L}^2(E,F) \\
                 \alpha \cdot f + g \in &\mathcal{L}(E,F)
             \end{align*}
+        \end{minipage}
 \end{enumerate}
 \end{document}

@@ -37,7 +37,6 @@
 
 
 \newcommand{\fairemarges}{
-	\makenomenclature
 	\pagestyle{fancy}
 	\fancyheadoffset{1cm}
 	\setlength{\headheight}{2cm}
@@ -63,20 +62,10 @@
 	%\vspace{0.5cm}%Espace de 1cm
     \rule{\linewidth}{0.5 mm} \\[0.4 cm]
     % \rule{\linewidth}{0.2 mm} \\[1.5 cm]
-	% \vspace{1cm}%Espace de 3cm
-    
-	
-	% 	\begin{flushleft} \large %Envoyer à gauche
-	% 	\emph{\textbf{Students :}}\\ %Pour le titre au dessus des noms à gauche
-    %     \eleves\\ %Remplacer pour chacun
-	% 	\end{flushleft}
-	
-	% ~
-	
-    
+	%put the text left justified
+	\raggedright
+	{\Large\bfseries Contents \par}
 	% \vfill
-	
-
 	\@starttoc{toc}
 \end{titlepage}
 }
