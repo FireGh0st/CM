@@ -55,7 +55,7 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
 
 \begin{enumerate}
     \item We call kernel of $f$ and denote $Ker(f)$ the subset of $E$ defined as follows: 
-    \[ Ker(f) = \{X \in E \mid f(X) = 0_F\} = f^{-1}(\{0_F\})\]
+    \[ Ker(f) = \{X \in E, f(X) = 0_F\} = f^{-1}(\{0_F\})\]
     \textit{Note: $f^{-1}()$ is NOT the inverse of $f$ beacause $f$ is not necessarily bijective.}
     \item We call image of $f$ and denote $Im(f)$ the subset of $F$ defined as follows:
     \[ Im(f) = \{f(X), X \in E\}=\{Y \in F, \exists X \in E, f(X) = Y\}\]
@@ -94,5 +94,24 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
     \[\forall (\alpha, X, Y) \in \mathbb{R} \times  \mathbb{R}^2 \times \mathbb{R}^2, X = \begin{pmatrix} x \\ y \end{pmatrix} \text{ and } Y = \begin{pmatrix} x' \\ y' \end{pmatrix}, x,y,x',y' \in \mathbb{R}\]
     \[f(\alpha \cdot X + Y) = \begin{pmatrix} \alpha \cdot x + x' \\ \alpha \cdot y + y' \end{pmatrix} = \begin{pmatrix} \alpha \cdot x + x' \\ 0 \\ \alpha \cdot y + y' \end{pmatrix} = \alpha \cdot \begin{pmatrix} x \\ 0 \\ y \end{pmatrix} + \begin{pmatrix} x' \\ 0 \\ y' \end{pmatrix} = \alpha \cdot f(X) + f(Y)\]
     so \circled{1} $f \in \mathcal{L}(R^2,R^3)$ \checkmark
+    \item $Ker(f) = \left\{ \begin{pmatrix} x \\ y \end{pmatrix} \in R^2, \begin{pmatrix} x \\ 0 \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \right\} = \left\{ \begin{pmatrix} 0 \\ 0 \end{pmatrix} \right\}$
+    \item $Im(f) = \left\{ \begin{pmatrix} x \\ 0 \\ y \end{pmatrix}, (x,y) \in R^2 \right\} = \left\{ x \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} + y \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}, (x,y) \in R^2 \right\}$ 
+    \\$Im(f) = span\left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}$
+\end{enumerate}
+\subsection{Proposition}
+\begin{enumerate}
+    
+
+    \item Let $f \in \mathcal{L}(E,F)$ and $g \in \mathcal{L}(F,G)$. Then: \[g \circ f \in \mathcal{L}(E,G)\]
+    \item If $f$ is objectif then $f{^{-1}}$ is bijective and $f{^{-1}} \in \mathcal{L}(F,E)$
+    \item $\mathcal{L}(E,F)$ is a $\mathbb{K}-VS$:
+            \begin{align*}
+                E &\rightarrow F \\
+                \mathcal{L}(E,F) X &\rightarrow  B_F \in \mathcal{L}(F,E)
+            \end{align*}
+            \begin{align*}
+                \forall (\alpha, f, g) \in \mathbb{K} \times &\mathcal{L}^2(E,F) \\
+                \alpha \cdot f + g \in &\mathcal{L}(E,F)
+            \end{align*}
 \end{enumerate}
 \end{document}
