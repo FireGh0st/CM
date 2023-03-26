@@ -2,7 +2,7 @@
 \usepackage{lipsum}
 \usepackage{tikz}
 \usepackage{enumitem}
-\usetikzlibrary{positioning}
+\usetikzlibrary{patterns,positioning}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \title{Linear Maps Chap. 12} %Titre du fichie
@@ -68,6 +68,36 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
     \item We call image of $f$ and denote $Im(f)$ the subset of $F$ defined as follows:
     \[ Im(f) = \{f(X), X \in E\}=\{Y \in F, \exists X \in E, f(X) = Y\}\]
 \end{enumerate}
+\subsection{Graphics representation}
+    \begin{tikzpicture}
+        % draw the sets
+        \filldraw[fill=blue!20, draw=blue!60] (-1.5,0) ellipse (0.7cm and 1cm);
+        \filldraw[draw=blue!60, pattern = north west lines, pattern color=blue] (-1.3,0.1) ellipse (0.25cm and 0.5cm) ;
+        \filldraw[fill=red!20, draw=red!60] (1.5,0) ellipse (0.7cm and 1cm);
+        \filldraw[draw=red!60, pattern = north west lines, pattern color=red] (1.3,-0.2) ellipse (0.25cm and 0.5cm);
+
+        % the texts
+        \node at (-2.75,0) {$f:$};
+        \node (A) at (-1.5,1.5) {$A$};
+        \node (B) at (1.5,1.5) {$B$};
+
+        % the points in the sets (here I just create nodes to use them later on to position
+        % the circles and the arrows
+        \node (kerf1) at (-1.3,-0.25) {};
+        \node (kerf2) at (-1.3,-1.5) {$Ker(f)$: Vector Space of $A$};
+        \node (im1) at (1.4,0) {};
+        \node (im2) at (5,0) {$Img(f)$: Vector Space of $B$};
+
+        \node (x) at (-1.3,0.3) {};
+        \node (y) at (1.3,-0.3) {};
+        \fill[black] (x) circle (1pt);
+        \fill[black] (y) circle (1pt);
+        % draw the arrows
+        \draw[->,line width=1.1pt] (kerf1) -- (kerf2);
+        \draw[->,line width=1.1pt] (im1) -- (im2);
+        \draw[->] (x) -- (y); %node[midway, above] {$f(x)$:};
+        \draw[->] (A) -- (B);
+    \end{tikzpicture}
 \subsection{Example}
 \begin{minipage}{0.60\linewidth}
     \begin{tikzpicture}[node distance=1mm]
@@ -133,5 +163,15 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
                 \alpha \cdot f + g \in &\mathcal{L}(E,F)
             \end{align*}
         \end{minipage}
+    \item Let $f \in \mathcal{L}(A,B)$:
+        \begin{itemize}
+            \item $f$ is injective $ \Longleftrightarrow  Ker(f) = \left\{ 0_A \right\}$
+            \item $f$ is surjective $ \Longleftrightarrow  Im(f) = B$
+        \end{itemize}
 \end{enumerate}
+\subsection{Projects and Symmetries}
+\subsubsection{Definition}
+Let $E$ a $\mathbb{K}$ - VS. Let $F$ and $G$ two supllementary $\mathbb{K}$ - VSS of $E$:
+\[E = F \oplus G  \Longleftrightarrow \forall X \in E, \exists ! (X_F, X_G) \in F \times G, X = X_F + X_G\]
+
 \end{document}
