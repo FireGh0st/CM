@@ -279,4 +279,79 @@ Hypothesis: $dim(E) = dim(F)$
 &\Longleftrightarrow dim(F) = dim(Im(f)) \\
 \text{f surjective} &\Longleftrightarrow Im(f) = F 
 \end{align*}
+\section{Important Proof}
+\fbox{
+\begin{minipage}{0.9\linewidth}   
+    \subsection{Proposition (Kernel and image).}
+    Let $E$ and $F$ be two vector spaces over $\mathbb{R}$ and $f \in \mathcal{L}(E,F)$.
+    \begin{enumerate}
+        \item $Ker(f)$ is a linear subspace of $E$.
+        \item $Im(f)$ is a linear subspace of $F$.
+    \end{enumerate}
+\end{minipage}}
+\subsubsection{Proof:}
+\begin{enumerate}
+    \item $Ker(f)$ is a linear subspace of $E$.
+    \begin{itemize}
+        \item By definition, $Ker(f) \subset E$. Since $f$ is a linear map from $E$ to $F$, we know that $f(0_E) = 0_F$ , that is, $0_E \in Ker(f)$.
+        \item Let $(u, v) \in (Ker(f))^2$ and $\alpha \in \mathbb{R}$.
+        \begin{align*}
+            f(\alpha u + v) &= \alpha f(u) + f(v) \text{ because } f \text{ is a linear map} \\
+            &= \alpha (0_F) + (0_F) \\
+            &= 0_F
+        \end{align*}
+        Thus, $\alpha u + v \in Ker(f)$. $Ker(f)$ is hence a linear subspace of $E$.
+    \end{itemize}
+    \item $Im(f)$ is a linear subspace of $F$.
+    \begin{itemize}
+        \item By definition, $Im(f) \subset F$. Since $f$ is a linear map from $E$ to $F$, we know that $0_F = f(0_E)$. Thus, $0_F \in Im(f)$.
+        \item Let $(v, v') \in (Im(f))^2$ and $\alpha \in \mathbb{R}$. Then:
+        \[v \in Im(f) \Leftrightarrow \exists w \in E, v = f(w) \quad \text{and} \quad v' \in Im(f) \Leftrightarrow \exists w' \in E, v' = f(w')\]
+        We hence get:
+        \begin{align*}
+            \alpha v + v' &= \alpha f(w) + f(w') \\
+            &= f(\alpha w + w) \text{ since } f \text{ is a linear map}\\
+        \end{align*}
+        This proves that $\alpha v + v' \in Im(f)$. $Im(f)$ is hence a linear subspace of $F$.
+    \end{itemize}
+\end{enumerate}
+\fbox{
+\begin{minipage}{0.9\linewidth}   
+    \subsection{
+        Proposition (Characterizing injective and surjective linear maps).}
+    Let $E$ and $F$ be two vector spaces over $\mathbb{R}$ and $f \in \mathcal{L}(E,F)$.
+    \begin{enumerate}
+        \item $f$ is injective if and only if $Ker(f) = \left\{ 0_E \right\}$.
+        \item $f$ is surjective if and only if $Im(f) = F$.
+    \end{enumerate}
+\end{minipage}}
+\subsubsection{Proof:}
+\begin{enumerate}
+    \item \fbox{$\Longrightarrow$} Assume that $f$ is injective. We hence know that
+    \[ \forall (u, u') \in E ^2, f(u) = f(u') \Rightarrow u = u'\]
+    \begin{itemize}
+        \item Let $u \in Ker(f)$. \\
+        $f(u) = 0_F$ and $0_F = f(0_E)$. (because $f$ is a linear map) $\Rightarrow f(u) = f(0_E) \Rightarrow u = 0_E$ using the injectivity definition.
+        This proves that $Ker(f) \subset \left\{ 0_E \right\}$.
+        \item Since $\left\{ 0_E \right\} \subset Ker(f)$, we get $Ker(f) = \left\{ 0_E \right\}$.
+    \end{itemize}
+    \fbox{$\Longleftarrow$} Assume that $Ker(f) = \left\{ 0_E \right\}$. \\
+    Let $(u, u') \in E ^2$ such that $f(u) = f(u')$. Then
+    \begin{align*}
+        f(u) = f(u') &\Rightarrow f(u) - f(u') = 0_F \\
+        &\Rightarrow f(u - u') = 0_F \text{ because } f \text{ is a linear map} \\
+        &\Rightarrow u - u' \in Ker(f)\\
+        &\Rightarrow u - u' = \left\{ 0_E \right\} \text{ because } Ker(f) = \left\{ 0_E \right\} \\
+        &\Rightarrow u - u' = 0_E \\
+        &\Rightarrow u = u' 
+    \end{align*}
+    $f$ is hence injective.
+    \item For the surjectivity, we have:
+    \begin{align*}
+        f \text{ surjective} &\Longleftrightarrow \forall v \in F, \exists u \in E, v = f(u) \\
+        &\Longleftrightarrow \forall v \in F, v \in Im(f) \\
+        &\Longleftrightarrow F \subset Im(f) \\
+        &\Longleftrightarrow Im(f) = F \text{ since the inclusion } Im(f) \subset F \text{ is always true}
+    \end{align*}
+\end{enumerate}
 \end{document}
