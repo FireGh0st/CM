@@ -2,7 +2,7 @@
 \usepackage{lipsum}
 \usepackage{tikz}
 \usepackage{enumitem}
-\usetikzlibrary{patterns,positioning}
+\usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 \title{Linear Maps Chap. 12} %Titre du fichie
@@ -169,9 +169,114 @@ Let $E$ and $F$ two $\mathbb{K}-VS$ and $f \in \mathcal{L}(E,F)$. Then:
             \item $f$ is surjective $ \Longleftrightarrow  Im(f) = B$
         \end{itemize}
 \end{enumerate}
-\subsection{Projects and Symmetries}
-\subsubsection{Definition}
+\section{Projects and Symmetries}
+\subsection{Reminder:}
+\subsubsection{Definition of supllementary subspaces}
 Let $E$ a $\mathbb{K}$ - VS. Let $F$ and $G$ two supllementary $\mathbb{K}$ - VSS of $E$:
 \[E = F \oplus G  \Longleftrightarrow \forall X \in E, \exists ! (X_F, X_G) \in F \times G, X = X_F + X_G\]
+\subsection{Proposition}
+\begin{tikzpicture}[node distance=1mm]
+    \node (Let) at (-2, 0) {Let us consider:};
+    \node (functionName) at (2, -0.5) {$p:$};
 
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$E$};
+    \node[right = 1.5cm of domain] (codomain) {$F$};
+    \node[right = 0.1mm of codomain] (Rcodomain) {$\color{green} \subset E$};
+    \draw [decorate, decoration={brace, mirror, raise=2.5pt}, green] (codomain.south west) -- (Rcodomain.south east) node [green, midway,sloped,below = 0.15cm] {\tiny $E$};
+    \node[below = 5mm of domain] (element) {$X$};
+    \node at (element-|codomain) (image) {$X_F$};
+    \node[right = 1cm of image] (Rimage) {$\color{green} X_F$};
+    \draw[->] (domain) -- (codomain);
+    \draw[green, |->] (image) -- (Rimage) node[midway, above]{$\color{green} p$};
+    \draw[|->] (element) -- (image) node[midway, above]{$\color{green} p$};
+\end{tikzpicture}
+\begin{enumerate}
+    \item $p \in \mathcal{L}(E)$
+    \item $p \circ p$ $(=p^2) = p$
+    \item \begin{itemize}
+        \item $Ker(p) = G$
+        \item $Im(p) = F$
+    \end{itemize}
+\end{enumerate}
+\subsection{Definition}
+We call projector from $\mathbb{K}$ - VS $E$ over $\mathbb{K}$ - VS $F$, any endomorphism $p$ of $E$ such that $p \circ p = p$. (We often say that $p$ is a projector over $F$ parallel of/alongside $G$.) 
+\[Im(p) \oplus Ker(p) = E\]
+
+\begin{tikzpicture}[node distance=1mm]
+    \node (Let) at (-2, 0) {Let us consider:};
+    \node (functionName) at (2, -0.5) {$S:$};
+
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$E$};
+    \node[right = 3cm of domain] (codomain) {$E$};
+    \node[below = 5mm of domain] (element) {$X$};
+    \node at (element-|codomain) (image) {$(2P - Id_E)(X)$};
+    \node[right = -0.1cm of image] (Rimage) {$\color{green} = 2p(x)-X$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image);
+\end{tikzpicture}
+
+\begin{minipage}{0.4\linewidth}    
+    \begin{enumerate}
+        \item $S \in \mathcal{L}(E)$
+        \item $\forall X \in E, S(X) = X_E - X_G$
+        \item $S \circ S = Id_E$
+    \end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\linewidth} 
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %Straight Lines [id:da24929647938311184] 
+        \draw    (189.3,210) -- (189.3,42.05) node[above] {$X_G$};
+        %Straight Lines [id:da4428013785785254] 
+        \draw    (151.6,132) -- (280,132) node[right] {$X_F$};
+        %Straight Lines [id:da03148052252332034] 
+        \draw[->,line width=1.1pt]  (189.3,132) -- (269.7,60.55) ;
+        %Straight Lines [id:da8135470928175486] 
+        \draw[->,line width=1.1pt]    (189.3,132) -- (270.8,201) ;
+        %Straight Lines [id:da10546756418707193] 
+        \draw [dash pattern={on 4.5pt off 4.5pt}]  (269.7,60.55) -- (269.7,157.55) -- (269.7,200.05) ;
+        
+        % Text Node
+        \draw (276.7,49.2) node [anchor=north west][inner sep=0.75pt]    {$X$};
+        % Text Node
+        \draw (276.7,193.7) node [anchor=north west][inner sep=0.75pt]    {$X_F-X_G$};
+    \end{tikzpicture} 
+\end{minipage}
+\section{Rank Nullity Theorem (RNT)}
+\subsection{Definition of Rank}
+Let $E$ and $F$ two finite dimensional vector spaces. We call rank of any mapping $f$ from $\mathcal{L}(E,F)$ and denote $rank(f)$ the dimension of $Im(f)$: \[rank (f) = dim (Im(f))\]
+\subsection{Proposition}
+Let $E$ a finite dimensional $\mathbb{K}$ - VS such that $B = (U_1, U_2, \dots, U_n)$ a basis of $E$. Let $F$ a $\mathbb{K}$ - VS.
+Then let $f \in \mathcal{L}(E,F)$.
+We have: \[Im (f) = sp(\{f(U_1), f(U_2), \dots, f(U_n)\})\]
+We then deduce the following theorem: 
+\subsection{Theorem (Rank Nullity Theorem)} 
+Let $E$ a finite dimensional VS and $f \in \mathcal{L}(E,F)$. Then: \\
+\begin{tikzpicture}
+    \node (Let) at (-2, 0) {};
+    \node (E) at (2, 1.5) {$dim(\color{red}E\color{black}) = $};
+    \node[right = -0.1mm of E] (kern) {$dim(Ker(\color{red}f\color{black}))$ $ + $};
+    \node[right = -0.1mm of kern] (rank) {$rank(\color{red}f\color{black})$};
+    \draw [decorate, decoration={brace, mirror, raise=2.5pt}] (rank.south west) -- (rank.south east) node [midway,sloped,below = 0.15cm] {$dim(Im(\color{red}f\color{black}))$};
+\end{tikzpicture}
+\subsection{Corollary}
+Let $f \in \mathcal{L}(E,F)$ where $E$ and $F$ two finite dimensional vector spaces.
+\[\text{If } dim(E) = dim(F) (\Longleftrightarrow dim(Ker(f)) = 0 \text{ or } dim(Im(f)) = 0)\]
+\[\Longrightarrow\]
+\[\text{f injective} \Longleftrightarrow \text{f surjective} \Longleftrightarrow \text{f bijective}\]
+\subsection{Involvement}
+\[\text{f injective} \Longleftrightarrow Ker(f) = \left\{ 0_E \right\}\]
+\[\left[ \text{f injective} \Longrightarrow dim(E) \le dim(F) \right] \Longleftrightarrow \left[ dim(E) > dim(F) \Longrightarrow \text{f not injective} \right]\]
+\[\text{f surjective} \Longleftrightarrow Im(f) = F\]
+\[\left[ \text{f surjective} \Longrightarrow dim(E) \ge dim(F) \right] \Longleftrightarrow \left[ dim(E) < dim(F) \Longrightarrow \text{f not surjective} \right]\]
+\subsection{Proof of corollary}
+Hypothesis: $dim(E) = dim(F)$ 
+\begin{align*}
+\text{f injective} &\Longleftrightarrow Ker(f) = \left\{ 0_E \right\} \\
+&\Longleftrightarrow dim(Ker(f)) = 0 \\
+&\Longleftrightarrow dim(E) = dim(Ker(f)) + dim(Im(f)) \\
+&\Longleftrightarrow dim(E) = dim(Im(f)) \\
+&\Longleftrightarrow dim(F) = dim(Im(f)) \\
+\text{f surjective} &\Longleftrightarrow Im(f) = F 
+\end{align*}
 \end{document}
