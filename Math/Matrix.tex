@@ -17,6 +17,11 @@
 \titlespacing*{\paragraph}
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
+\newcommand{\MatrixDomaine}{\begin{smallmatrix}
+    1 \leq i \leq n \\
+    1 \leq j \leq p
+\end{smallmatrix}}
+
 %
 \section{General approach}
 \subsection{Definition}
@@ -122,6 +127,23 @@ Let $A \in M_{np}(\mathbb{K})$ then:
         0 & 2 & 0 \\
         0 & 0 & 3
     \end{pmatrix} \in M_{3}(\mathbb{R})\]
+\subsubsection{Identity matrix}
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item $\forall I_n \in M_{n}(\mathbb{R})$, if $\forall (i,j) \in \llbracket 1,n \rrbracket ^2, i \ne j \Rightarrow  a_{ij} = 0$ and $i = j \Rightarrow a_{ij} = 1$ then we say $I_n$ is a identity matrix
+    \end{enumerate}
+    \paragraph{Example}
+    \[ I_n' = \begin{pmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{pmatrix} \in M_{2}(\mathbb{R})\]
+    \[ I_n'' = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix} \in M_{3}(\mathbb{R})\]
+
+
 
 \subsubsection{Triangular matrix}
     \begin{enumerate}
@@ -187,4 +209,126 @@ Let $A \in M_{np}(\mathbb{K})$ then:
             3 & -5 & 0
         \end{pmatrix}
             \in M_{3}(\mathbb{R})\]
+\section{Operations on matrices}
+\subsection{Addition and external product}
+\subsubsection{Definition}
+\begin{enumerate}
+    \item We call internal operation in $M_{np}(\mathbb{K})$ denoted $\oplus$ "internal addition" the one definde as follows:
+    \[ \forall A,B \in M^2_{np}(\mathbb{K}),  A + B = (a_{ij} + b_{ij})_{\MatrixDomaine}\]
+    \[ \text{Where } A = {a_{ij}}_{\MatrixDomaine} \text{ and } B = {b_{ij}}_{\MatrixDomaine}\]
+    \item We call "external multiplication" or "multiplication by a scalar" the one defined as follows:
+    \[ \forall A \in M_{np}(\mathbb{K}), \forall \alpha \in \mathbb{K}, \alpha A = (\alpha a_{ij})_{\MatrixDomaine}\]
+\end{enumerate}
+\paragraph{Example}
+\begin{align*}
+    (A,B) &\in M_{2,3}(\mathbb{R})^2 \quad A = \begin{pmatrix}
+        1 & 2 & 3 \\
+        4 & 5 & 6
+    \end{pmatrix} \text{ and } B = \begin{pmatrix}
+        7 & 8 & 9 \\
+        10 & 11 & 12
+    \end{pmatrix} \\
+    A + B & = \begin{pmatrix}
+        1 + 7 & 2 + 8 & 3 + 9 \\
+        4 + 10 & 5 + 11 & 6 + 12
+    \end{pmatrix} = \begin{pmatrix}
+        8 & 10 & 12 \\
+        14 & 16 & 18
+    \end{pmatrix} \\
+    \alpha = 3,& \quad \alpha A = \begin{pmatrix}
+        3 \times 1 & 3 \times 2 & 3 \times 3 \\
+        3 \times 4 & 3 \times 5 & 3 \times 6
+    \end{pmatrix} = \begin{pmatrix}
+        3 & 6 & 9 \\
+        12 & 15 & 18
+    \end{pmatrix}
+\end{align*}
+\paragraph{Proposition}
+\[(M_{np}, \oplus, \cdot) \text{ is a vector space over } \mathbb{K}\]
+\subsubsection{Elementary matrix}
+For $(n,p) \in \mathbb{N}^2, (i,j) \in \llbracket 1,n \rrbracket \times \llbracket 1,p \rrbracket;$ We denote $E_{ij}$ the matrix from $M_{np}(\mathbb{K})$
+such that the $ij$-th coefficient is $1$ and all other coefficient are $0$.
+\[ E_{ij} \text{ are called elementary matrix}\]
+\paragraph{Example}
+\begin{align*}
+    E_{11} & = \begin{pmatrix}
+        1 & 0 \\
+        0 & 0 \\
+    \end{pmatrix} \\
+    E_{22} & = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 0
+    \end{pmatrix} \\
+    E_{33} & = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 1
+    \end{pmatrix}
+\end{align*}
+\subsubsection{Proposition}
+\begin{enumerate}
+    \item $(E_{ij})_{\MatrixDomaine}$ is a basis of $M_{np}(\mathbb{K})$
+    \item $dim((E_{ij})_{\MatrixDomaine}) = np$ \\
+    Ex: $M_{2}(\mathbb{R})$ a $(\mathbb{K})$-VS: B = $\left( 
+        \begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0 & 1 \\
+            0 & 0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0 & 0 \\
+            1 & 0
+        \end{pmatrix},
+        \begin{pmatrix}
+            0 & 0 \\
+            0 & 1
+        \end{pmatrix}
+    \right)$\\
+    B is a Standard basis of $M_{2}(\mathbb{R})$, $dim(M_2(\mathbb{R})) = 2^2 = 4$
+\end{enumerate}
+\subsection{Internal product}
+\subsubsection{Definition}
+Let $(n,p,q) \in \mathbb{N}^3$ and $A = {a_{ij}}_{\MatrixDomaine} \in M_{np}(\mathbb{K}), B = {b_{ij}}_{\begin{smallmatrix}1 \leq i \leq p \\1 \leq j \leq q\end{smallmatrix}} \in M_{pq}(\mathbb{K})$.
+We call product of $A$ and $B$ the matrix $C$ form $M_{nq}(\mathbb{K})$ such that:
+\[ \forall (i,j) \in \llbracket 1,n \rrbracket \times \llbracket 1,q \rrbracket, c_{ij} = \sum_{k=1}^{p} a_{ik}b_{kj}\]
+
+\paragraph{Example}
+\[
+    A = \begin{pmatrix}
+        1 & 2 & 3 \\
+        \color{red} 4 & \color{red}5 & \color{red}6
+    \end{pmatrix} \in M_{2,3}(\mathbb{R}) \quad \text{ and } \quad B = \begin{pmatrix}
+        1 & 0 & \color{red}1 & 3 \\
+        0 & 0 & \color{red}2 & 4 \\
+        0 & 0 & \color{red}1 & 0
+    \end{pmatrix} \in M_{3,4}(\mathbb{R}) \]
+    \[C = A \cdot B = \begin{pmatrix}
+        1 & 0 & 8 & 11 \\
+        4 & 0 & \color{red}20 & 32
+    \end{pmatrix} \in M_{2,4}(\mathbb{R})\]
+    \[ C_{2,3} = 4 \times 1 + 5 \times 2 + 6 \times 1 = 20 \] 
+\subsubsection{Remarks}
+\begin{enumerate}[label=\protect\circled{R\arabic*}]
+    \item If $A,B$ two matrices: we only can multiply $A$ by $B$ if the number of column of $A$ is equal to the number of row of $B$.
+    \item $AB$ can exists but $BA$ not or the other way around.
+        \paragraph{Example}
+        \[A = \begin{pmatrix}
+            1 & 2 & 3\\
+            4 & 5 & 6
+        \end{pmatrix} \cdot B = \begin{pmatrix}
+            1 \\
+            2 \\
+            3
+        \end{pmatrix} \Rightarrow M_{2,1}(\mathbb{R}) \text{, and exists but } BA \text{ does not exists}\]
+    \item In the \fbox{General case}, where $AB$ and $BA$ exists:\\
+    {\color{red}{\fbox{ \color{black}AB $\neq$ BA }}} (multiplication of matrix is not commutative)\\
+    When $AB = BA$ we say $A$ and $B$ commute. 
+\end{enumerate}
+\subsection{Properties of matrix calculus}
+\subsubsection{Properties}
+
 \end{document}

@@ -28,12 +28,15 @@
 \usepackage{xspace}
 \usepackage{stmaryrd}
 \usepackage{titlesec}
+\usepackage{tikz}
+\usepackage{enumitem}
 
 %-------------------- Informations sur le rapport ----------------------
 
 \newcommand{\UE}[1]{\renewcommand{\UE}{#1}}
 \newcommand{\titre}[1]{\renewcommand{\titre}{#1}}
-
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 
 \newcommand{\fairemarges}{
