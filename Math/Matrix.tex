@@ -330,5 +330,139 @@ We call product of $A$ and $B$ the matrix $C$ form $M_{nq}(\mathbb{K})$ such tha
 \end{enumerate}
 \subsection{Properties of matrix calculus}
 \subsubsection{Properties}
-
+\begin{enumerate}
+    \item Let $A,B$ two matrices such that $AB$ exists. \\
+    We can have $AB = 0$ and ($A \neq 0$ or $B \neq 0$)\\
+    \[ \text{If } A = 0 \text{ or } B = 0 \text{ then } AB = 0 \]
+    \[ AB = 0 \nRightarrow A = 0 \text{ or } B = 0 \]
+    \paragraph{Example}
+    \[\begin{pmatrix}
+        1 & 1 \\
+        1 & 1 
+    \end{pmatrix} \cdot \begin{pmatrix}
+        -2 & 3 \\
+        2 & -3 
+    \end{pmatrix} = \begin{pmatrix}
+        0 & 0 \\
+        0 & 0
+    \end{pmatrix}\]
+    \item $(n,p,q,r) \in \mathbb{N}^4$ and let $ (A,B,C) \in M_{np}(\mathbb{K}) \times M_{pq}(\mathbb{K}) \times M_{qr}(\mathbb{K})$\\
+    \[ A \cdot (B \cdot C) = (A \cdot B) \cdot C \otimes \text{ is commutative}\] 
+    \item $(A,B,C) \in M_{np}(\mathbb{K}) \times M_{pq}^2(\mathbb{K})$
+    \[ A \cdot (B + C) = A \cdot B + A \cdot C\]
+    $\otimes$ (Matrices multiplication) is distributive over matrix addition ($\oplus$). 
+    \item $ A \in M_{np}(\mathbb{K})$ and $B \in M_{pq}(\mathbb{K})$ and $ \lambda \in \mathbb{K}$\\
+    \[ \lambda \cdot (A \cdot B) = A \cdot \lambda \cdot B = A \cdot B \cdot \lambda \] 
+\end{enumerate}
+\subsubsection{Case of Square Matrices}
+\begin{enumerate}
+    \item \[ \forall A \in M_{n}(\mathbb{K}), A \cdot I_n  = I_n \cdot A = A \]
+    \item Let $(A,B) \in M_{n}(\mathbb{K})^2$, such that {\color{red}{\fbox{\color{black}$ AB = BA $}}} Then:
+    \[ (A+B)^n { \color{red}{\fbox{\color{black}$ = $}}} \sum_{k=0}^{n} \binom{n}{k} A^k B^{n-k} \]
+    By convention, $A^0 = B^0 = I_n$\\
+    \item \[ \forall (A,B) \in M_{n}(\mathbb{K})^2, {} ^ t (A \cdot B) = {} ^t A \cdot {} ^ t B \]
+\end{enumerate}
+\subsection{Inverse of a matrix}
+\subsubsection{Definition}
+Let $A \in M_{n}(\mathbb{K})$ we say that $A$ is invertible if:
+\[  \exists B \in M_{n}(\mathbb{K}), AB = BA = I_n \]
+Then we say that $B$ is the inverse of $A$ and denote $B = A^{-1}$ $\quad$ (B is unique)
+Hence we have (in case of A invertible): $A \cdot A^{-1} = A^{-1} \cdot A = I_n$
+\subsubsection{Notation}
+The set of invertible matrices of $M_{n}(\mathbb{K})$ is denoted $GL_n(\mathbb{K})$
+\subsubsection{How to find the inverse of a matrix}
+We will use the following system:
+Where $A \in M_{n}(\mathbb{K}), (U,V) \in M_{n,1}(K)^2$:
+\[A \cdot U = V  \]
+By solving this system (Gauss elimination algorithm) when $A$ is invertible, we will have:
+\[ U = A^{-1} \cdot V \]
+\paragraph{Example}
+\begin{align*}
+        A = \begin{pmatrix}
+        1 & 0 & 1 \\
+        0 & 1 & 1 \\
+        1 & 1 & 0 
+        \end{pmatrix} 
+        A \cdot X = U \Rightarrow& 
+        \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix} \cdot \begin{pmatrix}
+            a \\
+            b \\
+            c
+        \end{pmatrix} = \begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix} \\
+        \Longleftrightarrow & 
+        \begin{pmatrix}
+            \circled{1} & 0 & 1 \\
+            0 & 1 & 1 \\
+            0 & 1 & -1
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            x \\
+            y \\
+            z - x
+        \end{pmatrix} \\
+        \Longleftrightarrow &
+        \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 1 & 1 \\
+            0 & 0  & -2
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            x \\
+            y \\
+            z - x - y
+        \end{pmatrix} \\
+        \Longleftrightarrow &
+        \begin{pmatrix}
+            2 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0  & -2
+        \end{pmatrix} =
+        \begin{pmatrix}
+            x - y + z \\
+            -x + y + z \\
+            z - x - y
+        \end{pmatrix} \\
+        \Longleftrightarrow &
+        \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0  & 1
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            \frac{x - y + z}{2} \\
+            \frac{-x + y + z}{2} \\
+            \frac{x + y - z}{2}
+        \end{pmatrix} \\
+        \Longleftrightarrow &
+        \begin{pmatrix}
+            a \\
+            b \\
+            c
+        \end{pmatrix} =
+        \begin{pmatrix}
+            \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\ 
+            -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+            \frac{1}{2} & \frac{1}{2} & -\frac{1}{2}
+        \end{pmatrix} \cdot
+        \begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix} \\
+        A ^{-1} = \begin{pmatrix}
+            \frac{1}{2} & -\frac{1}{2} & \frac{1}{2} \\ 
+            -\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \\
+            \frac{1}{2} & \frac{1}{2} & -\frac{1}{2}
+        \end{pmatrix}
+\end{align*}
+        
 \end{document}
