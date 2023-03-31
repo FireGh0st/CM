@@ -3,6 +3,7 @@
 \title{Matrix Chap. 13} %Titre du fichie
 \author{FireGhost} %Auteur du fichier
 
+\usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
 \begin{document}
 \titre{Chapter 13: Matrix} %Titre du fichier .pdf
 \UE{Matrix} %Nom de la UE
@@ -464,5 +465,56 @@ By solving this system (Gauss elimination algorithm) when $A$ is invertible, we 
             \frac{1}{2} & \frac{1}{2} & -\frac{1}{2}
         \end{pmatrix}
 \end{align*}
-        
+\section{Matrices of Linear Maps}
+\subsection{Definition and examples}
+\subsubsection{Definition}
+Let $f \in \mathcal{L}(E,F)$, $E$ and $F$ finite dimensional $\mathbb{K}$-vector spaces such that:
+$dim (E) = p$ and $dim (F) = n$ where $(p,n) \in \mathbb{N}^2$ and $B = (e_1,e_2,\dots,e_n)$ basis of E and $B' = (e_1',e_2',\dots,e_n')$ basis of F
+\[ \forall U \in E, \exists ! (\lambda_1, \lambda_2, \dots, \lambda_n) \in \mathbb{K}^p, \quad U=\sum_{i=1}^{p} \lambda_i e_i' \]
+We say $\begin{pmatrix} U_1 \\ U_2 \\ \vdots \\ U_n \end{pmatrix}$ is the column matrix of coordinates $A \cdot U$ in $B$.
+\subsubsection{Example}
+Let $E = \mathbb{R}^2$, $U = {\begin{pmatrix} 1 \\ 2 \end{pmatrix}}_B$ with $B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$ and $B' = (\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix})$Then:
+\[U = {\begin{pmatrix} 2 \\ 1 \end{pmatrix}}_B = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}_B + {\begin{pmatrix} 1 \\ 0 \end{pmatrix}}_B \Rightarrow U = {\begin{pmatrix} 1 \\ 1 \end{pmatrix}}_{B'}\]
+\subsubsection{Definition}
+We call matrix of $f \in \mathcal{L}(E,F)$ with respect to basis $B$ and $B'$ denoted $Mat_{BB'}(f)$ the matrix whose $j-th$ column is composed of the coordinates of $f(e_j)$ in $B'$, for all j from $\llbracket 1,p \rrbracket$.
+This is a matrix of $p$ columns and $n$ rows:
+\[\begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1p} \\
+    a_{21} & a_{22} & \cdots & a_{2p} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{np}
+\end{pmatrix}, \forall j \in \llbracket 1,p \rrbracket, f(e_j) = {\begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj} \end{pmatrix}}_B' = \sum_{i=1}^{n} a_{ij} e_i\]
+\subsubsection{Example}
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f:$};
+
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
+    \node[right = 1.5cm of domain] (codomain) {$R^3$};
+    \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
+    \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ 2x + 4y \\ -3y \end{pmatrix}$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}
+
+     
+
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item basis for the domain ($R^2$): B = ($\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$\\
+    basis for the codomain ($R^3$): $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$)
+
+    \item $\begin{pmatrix}
+        x + y \\
+        2x + 4y \\
+        -3y
+    \end{pmatrix} \Rightarrow \begin{cases}
+        f(\begin{pmatrix} 1 \\ 0 \end{pmatrix}) = {\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}}_{B'} \\
+        f(\begin{pmatrix} 0 \\ 1 \end{pmatrix}) = {\begin{pmatrix} 1 \\ 4 \\ -3 \end{pmatrix}}_{B'}
+    \end{cases}$
+    \item \[\forall U \in R^2, U = x \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix} \Rightarrow f(U) = x \cdot f \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot f \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+    \[ \Rightarrow \begin{pmatrix}
+        1 & 1 \\
+        2 & 4 \\
+        0 & -3
+    \end{pmatrix}\]
+\end{enumerate}
 \end{document}
