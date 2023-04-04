@@ -516,5 +516,127 @@ This is a matrix of $p$ columns and $n$ rows:
         2 & 4 \\
         0 & -3
     \end{pmatrix}\]
+    \[ \Rightarrow \begin{pmatrix}
+        1 & 1 \\
+        2 & 4 \\
+        0 & -3
+    \end{pmatrix} \cdot \begin{pmatrix}
+        1 \\
+        -1 
+    \end{pmatrix} = \begin{pmatrix}
+        0 \\
+        -2 \\
+        3
+    \end{pmatrix}\]
+    \[ \text{so } f \left(\begin{pmatrix} 1 \\ -1 \end{pmatrix}\right) = \begin{pmatrix} 0 \\ -2 \\ 3 \end{pmatrix}\]
 \end{enumerate}
+\subsection{Matrix interpretation of Linear Transformation}
+\subsubsection{Proposition}
+Let $E$ and $F$ two finite dimensional $\mathbb{K}$-VS, $B$ and $B'$ bases of respectively $E$ and $F$. Let $U \in E$ and $f \in \mathcal{L}(E,F)$.
+Then:
+\[ Mat_{B'}(f(u)) = Mat_{BB'}(f) \cdot Mat_{B}(u)\]
+\subsubsection{Example}
+With the same function as before: \\
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f:$};
+
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
+    \node[right = 1.5cm of domain] (codomain) {$R^3$};
+    \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
+    \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ 2x + 4y \\ -3y \end{pmatrix}$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}\\
+And with the same basis as before:
+$B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$ and $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix})$ \\
+
+And with $u = \begin{pmatrix} 1 \\ 2 \end{pmatrix}$ we have:
+\begin{align*}
+    Mat_{B'}(f(u)) &= Mat_{B'}(f) \cdot Mat_{B}(u) \\
+     &= \begin{pmatrix}
+        1 & 1 \\
+        2 & 4 \\
+        0 & -3
+    \end{pmatrix} \cdot \begin{pmatrix}
+        1 \\
+        2
+    \end{pmatrix} 
+    = \begin{pmatrix}
+        3 \\
+        10 \\
+        -6
+    \end{pmatrix} = f(u)
+\end{align*}
+\subsection{Matrix of g o f}
+\subsubsection{Proposition}
+Let $E,F$ and $G$ three finite dimensional $\mathbb{K}$-VS, and $B,B',B''$ bases of respectively $E,F$ and $G$. Considering $f \in \mathcal{L}(E,F)$ and $g \in \mathcal{L}(F,G)$, we have $g \circ  f \in \mathcal{L}(E,G)$ and:
+\[ Mat_{BB''}(g \circ f) = Mat_{B'B''}(g) \cdot Mat_{BB'}(f)\]
+\subsubsection{Example}
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f:$};
+    \node (functionName2) at (6, -0.5) {$g:$};
+    
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
+    \node[above right = -0.3cm and 0.5cm of functionName2] (domain2) {$R^2$};
+
+    \node[right = 1.5cm of domain] (codomain) {$R^2$};
+    \node[right = 1.5cm of domain2] (codomain2) {$R^3$};
+
+    \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
+    \node[below = 5mm of domain2] (element2) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
+
+    \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ x - y \end{pmatrix}$};
+    \node at (element2-|codomain2) (image2) {$\begin{pmatrix} x + 2y \\ x \\ -x + y \end{pmatrix}$};
+
+    \draw[->] (domain) -- (codomain);
+    \draw[->] (domain2) -- (codomain2);
+    \draw[|->] (element) -- (image) ;
+    \draw[|->] (element2) -- (image2) ;
+
+\end{tikzpicture}
+And with the following basis:
+$B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$ and $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix})$ \\
+\[ Mat_B(f)= \begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{pmatrix} \quad \text{and} \quad Mat_{BB'}(g)=\begin{pmatrix}
+        1 & 2  \\
+        1 & 0  \\
+        -1 & 1
+    \end{pmatrix}\]
+    \[ \forall X = \begin{pmatrix} x \\ y \end{pmatrix} \in R^2, \quad g \circ f(X) = g(f(X)) = g \left(\begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{pmatrix} \cdot \begin{pmatrix}
+        x \\
+        y
+    \end{pmatrix} \right)\]
+    \[ g \circ f(X) =
+        \begin{pmatrix}
+        1 & 2  \\
+        1 & 0  \\
+        -1 & 1
+    \end{pmatrix} \cdot \begin{pmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{pmatrix} \cdot \begin{pmatrix}
+        x \\
+        y
+    \end{pmatrix} = \begin{pmatrix}
+        3 & -1 \\
+        1 & 1 \\
+        0 & -2 
+    \end{pmatrix} \cdot \begin{pmatrix}
+        x \\
+        y
+    \end{pmatrix} \]
+
+\subsection{Matrix of a bijection}
+\subsubsection{Proposition}
+%f bij <=> MAt(f) invertible
+\subsubsection{Example}
+\subsubsection{Proposition}
+%if f bij then Mat(f)^-1 = Mat(f^-1)
+\subsubsection{Examples}
+
 \end{document}
