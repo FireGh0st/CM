@@ -483,13 +483,13 @@ This is a matrix of $p$ columns and $n$ rows:
     a_{21} & a_{22} & \cdots & a_{2p} \\
     \vdots & \vdots & \ddots & \vdots \\
     a_{n1} & a_{n2} & \cdots & a_{np}
-\end{pmatrix}, \forall j \in \llbracket 1,p \rrbracket, f(e_j) = {\begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj} \end{pmatrix}}_B' = \sum_{i=1}^{n} a_{ij} e_i\]
+\end{pmatrix}, \forall j \in \llbracket 1,p \rrbracket, f(e_j) = {\begin{pmatrix} a_{1j} \\ a_{2j} \\ \vdots \\ a_{nj} \end{pmatrix}}_{B'} = \sum_{i=1}^{n} a_{ij} e_i\]
 \subsubsection{Example}
 \begin{tikzpicture}[node distance=1mm]
     \node (functionName) at (0, -0.5) {$f:$};
 
-    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
-    \node[right = 1.5cm of domain] (codomain) {$R^3$};
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}^2$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^3$};
     \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
     \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ 2x + 4y \\ -3y \end{pmatrix}$};
     \draw[->] (domain) -- (codomain);
@@ -499,8 +499,8 @@ This is a matrix of $p$ columns and $n$ rows:
      
 
 \begin{enumerate}[label=\protect\circled{\arabic*}]
-    \item basis for the domain ($R^2$): B = ($\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$\\
-    basis for the codomain ($R^3$): $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$)
+    \item basis for the domain ($\mathbb{R}^2$): B = ($\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$\\
+    basis for the codomain ($\mathbb{R}^3$): $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$)
 
     \item $\begin{pmatrix}
         x + y \\
@@ -510,7 +510,7 @@ This is a matrix of $p$ columns and $n$ rows:
         f(\begin{pmatrix} 1 \\ 0 \end{pmatrix}) = {\begin{pmatrix} 1 \\ 2 \\ 0 \end{pmatrix}}_{B'} \\
         f(\begin{pmatrix} 0 \\ 1 \end{pmatrix}) = {\begin{pmatrix} 1 \\ 4 \\ -3 \end{pmatrix}}_{B'}
     \end{cases}$
-    \item \[\forall U \in R^2, U = x \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix} \Rightarrow f(U) = x \cdot f \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot f \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+    \item \[\forall U \in \mathbb{R}^2, U = x \cdot \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot \begin{pmatrix} 0 \\ 1 \end{pmatrix} \Rightarrow f(U) = x \cdot f \begin{pmatrix} 1 \\ 0 \end{pmatrix} + y \cdot f \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
     \[ \Rightarrow \begin{pmatrix}
         1 & 1 \\
         2 & 4 \\
@@ -540,8 +540,8 @@ With the same function as before: \\
 \begin{tikzpicture}[node distance=1mm]
     \node (functionName) at (0, -0.5) {$f:$};
 
-    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
-    \node[right = 1.5cm of domain] (codomain) {$R^3$};
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}^2$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^3$};
     \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
     \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ 2x + 4y \\ -3y \end{pmatrix}$};
     \draw[->] (domain) -- (codomain);
@@ -576,11 +576,11 @@ Let $E,F$ and $G$ three finite dimensional $\mathbb{K}$-VS, and $B,B',B''$ bases
     \node (functionName) at (0, -0.5) {$f:$};
     \node (functionName2) at (6, -0.5) {$g:$};
     
-    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$R^2$};
-    \node[above right = -0.3cm and 0.5cm of functionName2] (domain2) {$R^2$};
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}^2$};
+    \node[above right = -0.3cm and 0.5cm of functionName2] (domain2) {$\mathbb{R}^2$};
 
-    \node[right = 1.5cm of domain] (codomain) {$R^2$};
-    \node[right = 1.5cm of domain2] (codomain2) {$R^3$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^2$};
+    \node[right = 1.5cm of domain2] (codomain2) {$\mathbb{R}^3$};
 
     \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
     \node[below = 5mm of domain2] (element2) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
@@ -604,7 +604,7 @@ $B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}
         1 & 0  \\
         -1 & 1
     \end{pmatrix}\]
-    \[ \forall X = \begin{pmatrix} x \\ y \end{pmatrix} \in R^2, \quad g \circ f(X) = g(f(X)) = g \left(\begin{pmatrix}
+    \[ \forall X = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^2, \quad g \circ f(X) = g(f(X)) = g \left(\begin{pmatrix}
         1 & 1 \\
         1 & -1
     \end{pmatrix} \cdot \begin{pmatrix}
@@ -633,10 +633,217 @@ $B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 
 \subsection{Matrix of a bijection}
 \subsubsection{Proposition}
-%f bij <=> MAt(f) invertible
+Let $E$ and $F$ two $\mathbb{K}$-VS of same dimension. $B$ a bases of $E$ and $B'$ a bases of $F$. Let $f \in \mathcal{L}(E,F)$ Then:
+\[ f \text{ bijective } \Longleftrightarrow Mat_{BB'}(f) \text{ is invertible }\]
 \subsubsection{Example}
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f:$};
+
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}^2$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^2$};
+    \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
+    \node at (element-|codomain) (image) {$\begin{pmatrix} 2x + y \\ x - 4y \end{pmatrix}$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}\\
+To find if $f$ is bijective, we have to show that $f$ is surjective or injective, because $f$ is a endomorphism. \\
+with: $B = \left(\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}\right)$ 
+and $Mat(f) = \begin{pmatrix} 2 & 1 \\
+        1 & -4
+    \end{pmatrix}$ \\
+To prove $f$ is injective, we have to show that $ker (f) = \left\{ 0_{\mathbb{R}^2} \right\}$
+\begin{align*}   
+    f(X)  = \begin{pmatrix} 0 \\ 0 \end{pmatrix} &\Longleftrightarrow \begin{pmatrix} 2 & 1 \\
+        1 & -4
+    \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \\
+    &\Longleftrightarrow
+    \begin{pmatrix}
+        2 & 1 \\
+        0 & -9
+    \end{pmatrix} \text{ : } \begin{pmatrix} 0 \\ 0 \end{pmatrix} \\
+    &\Longleftrightarrow x = y = 0 \Rightarrow S = \left\{ 0_{\mathbb{R}^2} \right\} \\ 
+    &\Leftrightarrow f \text{ is injective so } f \text{ is bijective}
+\end{align*}
+Lets find the inverse of $f$, using two methods: \\
+\paragraph{Method 1: Gauss elimination algorithm}
+\begin{align*}
+    &\begin{pmatrix} 2 & 1 \\
+            1 & -4
+    \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix} \\
+    &\Longleftrightarrow \begin{pmatrix} 2 & 1 \\
+                 0 & -9 
+    \end{pmatrix} \text{ : } \begin{pmatrix} a \\ 2b-a \end{pmatrix} \\
+    &\Longleftrightarrow \begin{pmatrix} 18 & 0 \\
+             0 & -9
+    \end{pmatrix} \text{ : } \begin{pmatrix} 8a  + 2b\\ 2b-a \end{pmatrix} \\
+    &\Longleftrightarrow \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \cdot \begin{pmatrix} x \\ y \end{pmatrix} 
+    = \begin{pmatrix} \frac{4a + b}{9} \\ \frac{a-2b}{9} \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 4a + b \\ a-2b \end{pmatrix} \\
+    &\Longleftrightarrow \begin{pmatrix} x \\ y \end{pmatrix} = \frac{1}{9} \begin{pmatrix} 4& 1 \\ 1 & -2 \end{pmatrix} \cdot \begin{pmatrix} a \\ b \end{pmatrix} \\
+\end{align*}
+\paragraph{Method 2: System, Gauss-Jordan}
+
+
+Operations on left must be done also on right:
+\begin{align*}
+    \left( \begin{array}{cc|cc}
+        2 & 1 & 1 &  0 \\
+        1 & -4 & 0 & 1 \\
+    \end{array}\right)  & \Longleftrightarrow 
+    \left( \begin{array}{cc|cc}
+        2 & 1 & 1 &  0 \\
+        0 & -9 & -1 & 2 \\
+    \end{array}\right) \\
+    &\Longleftrightarrow 
+    \left( \begin{array}{cc|cc}
+        18 & 0 & 8 &  2 \\
+        0 & -9 & -1 & 2 \\
+    \end{array}\right)  \\
+    &\Longleftrightarrow 
+    \left( \begin{array}{cc|cc}
+        1 & 0 & \frac{4}{9} &  \frac{1}{9} \\
+        0 & 1 & -\frac{1}{9} & -\frac{2}{9} \\
+    \end{array}\right) 
+\end{align*}
+With both methods we have:
+    
+    
+    \[ \left[ Mat_{B}(f) \right]^{-1} = \frac{1}{9} \begin{pmatrix} 4& 1 \\ 1 & -2 \end{pmatrix} \]
+    
+    
+
+
 \subsubsection{Proposition}
 %if f bij then Mat(f)^-1 = Mat(f^-1)
+Let $E$ and $F$ two $\mathbb{K}$-VS of same dimension. $B$ a bases of $E$ and $B'$ a bases of $F$. Let $f \in \mathcal{L}(E,F)$ Then:
+\[ f \text{ bijective } \Longleftrightarrow Mat_{BB'}(f) \text{ is invertible }\]
+And in this case we have:
+\[ \left[Mat_{BB'}(f)\right]^{-1} = Mat_{BB'}(f^{-1})\]
 \subsubsection{Examples}
+\paragraph{Example 1}
+$A = \begin{pmatrix} 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 1 & 1 \end{pmatrix}$ \\
+\circled{1} Is $A$ invertible, compute the inverse of $A$ \\
+\begin{align*}
+    & \left( \begin{array}{ccc|ccc}
+        1 & 1 & 0 & 1 & 0 & 0 \\
+        1 & 0 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 1 \\
+    \end{array}\right)  \\ \Longleftrightarrow &
+    \left( \begin{array}{ccc|ccc}
+        \circled{1} & 1 & 0 & 1 & 0 & 0 \\
+        0 & \circled{-1} & 1 & -1 & 1 & 0 \\
+        0 & 0 & \circled{1} & 0 & 0 & 1 \\
+    \end{array}\right)  
+     \text{  There are pivot (circled) so A is invertible}\\
+    \Longleftrightarrow&
+    \left( \begin{array}{ccc|ccc}
+        1 & 1 & 0 & 1 & 0 & 0 \\
+        0 & -1 & 0 & 0 & 1 & -1 \\
+        0 & 0 & 1 & -1 & 0 & 1 \\
+    \end{array}\right)&  \\
+    \Longleftrightarrow& 
+    \left( \begin{array}{ccc|ccc}
+        1 & 0 & 0 & 1 & 1 & -1 \\
+        0 & 1 & 0 & 0 & -1 & 1 \\
+        0 & 0 & 1 & -1 & 0 & 1 \\
+    \end{array}\right)  \\
+    \Longleftrightarrow& A^{-1} = \begin{pmatrix} 1 & 1 & -1 \\ 0 & -1 & 1 \\ -1 & 0 & 1 \end{pmatrix}
+\end{align*}
+We can also compute $A^{-1}$ this way: (if A is invertible we have:)
+\begin{align*}
+AX = U  \Longleftrightarrow& X = A^{-1}U \\
+\Longleftrightarrow& \begin{pmatrix}
+    \circled{1} & 1 & 0 \\
+    1 & 0 & 1 \\
+    1 & 1 & 1
+\end{pmatrix} \cdot \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} a \\ b \\ c \end{pmatrix} \begin{matrix}R_1 \\ R_2-R_1 \\ R_3-R_1\end{matrix}  \\
+\Longleftrightarrow& \begin{pmatrix} 
+    \circled{1} & 1 & 0 \\
+    0 & \circled{-1} & 1 \\
+    0 & 0 & \circled{1} 
+\end{pmatrix} \text{ : } \begin{pmatrix} a \\ b-a \\ c-a \end{pmatrix} \begin{matrix}R_1 \\ R_2-R_3 \\ R_3\end{matrix}  \\
+\Longleftrightarrow& \begin{pmatrix} 
+    1 &\circled{1}  & 0 \\
+    0 & -1 & 0 \\
+    0 & 0 & 1
+\end{pmatrix} \text{ : } \begin{pmatrix} a \\ b \\ c \end{pmatrix} \begin{matrix}R_1 +R_2 \\ -R_2 \\ R_3\end{matrix}  \\
+\Longleftrightarrow& \begin{pmatrix} 
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{pmatrix} \text{ : } \begin{pmatrix} a + b - c \\ -b+c \\ c-a \end{pmatrix} \\
+\Longleftrightarrow& \begin{pmatrix} 
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+\end{pmatrix} \cdot \begin{pmatrix} x \\ y \\ z \end{pmatrix} = \begin{pmatrix} 1 & 1 & -1 \\ 0 & -1 & 1 \\ -1 & 0 & 1 \end{pmatrix} \begin{matrix}    a \\ b \\ c\end{matrix}
+\end{align*}
+\circled{2} Let $f \in \mathcal{L}(\mathbb{R}^3)$, Show that $f$ is an automorphism and determine $f^-1$ \\
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f:$};
 
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}^3$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^3$};
+    \node[below right = 0.1mm and 5cm of functionName] (Basis) {$B = \left(\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} , \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} , \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}\right)$};
+    \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \\ z \end{pmatrix}$};
+    \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ x + z \\ x + y + z\end{pmatrix}$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}\\
+$A = Mat{B}(f)$ so $A$ invertible $\Longleftrightarrow$ $f$ is an automorphism \\
+so $A^{-1} = Mat{B}(f^{-1})$ \\
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$f^{-1} \in \mathcal{L}(R^3)$:};
+
+    \node[right = 0.5cm of functionName] (domain) {$\begin{pmatrix} x \\ y \\ z \end{pmatrix}$};
+    \node[right = 1.5cm of domain] (codomain) {$\begin{pmatrix} x + y  - z \\ -y + z \\ - x + z  \end{pmatrix}$};
+    \node[right = 3mm of codomain] (using) {(using $A^{-1}$)};
+    \node[below = 3mm of domain] (element) {$\begin{pmatrix} x \\ y \\ z \end{pmatrix}$};
+    \node at (element-|codomain) (image) { $A^{-1} \begin{pmatrix} x \\ y \\ z \end{pmatrix}$};
+    \draw[|->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}\\
+\paragraph{Example 2}
+\begin{tikzpicture}[node distance=1mm]
+    \node (functionName) at (0, -0.5) {$\phi:$};
+
+    \node[above right = -0.3cm and 0.5cm of functionName] (domain) {$\mathbb{R}_2[X]$};
+    \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}_2[X]$};
+    \node[right = 5cm of functionName] (Basis) {$B = (1, X,X^2)$};
+    \node[below = 5mm of domain] (element) {$P$};
+    \node at (element-|codomain) (image) {$XP'+P(X+1)$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image) ;
+\end{tikzpicture}\\
+So we have:
+$\phi(1) = 1$ and $\phi(X) = 2X + 1$ and $\phi(X^2) = 3X^2 + 2X + 1$ \\
+So:
+$A = Mat_ {B}(\phi) = \begin{pmatrix} (\phi(1) & \phi(X) & \phi(X^2))\\1 & 1 & 1 \\ 0 & 2 & 2 \\ 0 & 0 & 3 \end{pmatrix} \begin{matrix}
+    \\1 \\ X \\ X^2
+\end{matrix}$ \\ an invertible matrix (upper right triangle with non zero diagonal coefficient\\
+We have to find $A^{-1}$ to find $\phi^{-1}$ \\
+\begin{align*}
+     \left( \begin{array}{ccc|ccc}
+        \circled{1} & 1 & 1 & 1 & 0 & 0 \\
+        0 & \circled{2} & 2 & 0 & 1 & 0 \\
+        0 & 0 & \circled{3} & 0 & 0 & 1 \\
+    \end{array}\right)  \begin{matrix}3R_1 - R_3 \\ R_2 - 2R_3 \\ R_3\end{matrix}
+     \Longleftrightarrow &
+    \left( \begin{array}{ccc|ccc}
+        3 & 3 & 0 & 3 & 0 & -1 \\
+        0 & 6 & 0 & 0 & 3 & -1 \\
+        0 & 0 & 3 & 0 & 0 & 1 \\
+    \end{array}\right) \begin{matrix} 2R_1-R_2 \\ R_2 \\ R_3 \end{matrix}  \\ 
+    \Longleftrightarrow&
+    \left( \begin{array}{ccc|ccc}
+        6 & 0 & 0 & 6 & -3 & 0 \\
+        0 & 6 & 0 & 0 & 3 & -2 \\
+        0 & 0 & 3 & 0 & 0 & 1 \\
+    \end{array}\right) \begin{matrix} \frac{1}{6}R_1 \\ \frac{1}{6}R_2 \\ \frac{1}{3}R_3 \end{matrix}  \\
+    \Longrightarrow&  \left[ Mat_{B}(\phi) \right]^{-1} = \begin{pmatrix} 1 & -\frac{1}{2} & 0 \\ 0 & \frac{1}{2} & -\frac{1}{3} \\ 0 & 0 & \frac{1}{3} \end{pmatrix} \\
+    \Longrightarrow& \left[ Mat_{B}(\phi) \right]^{-1} = \frac{1}{6} \begin{pmatrix} 6 & -3 & 0 \\ 0 & 3 & -2 \\ 0 & 0 & 2 \end{pmatrix} \\
+\end{align*}
+Now find $Q \in \mathbb{R}_2[X], \phi(Q)(X) = 1 + (X-1)^2$ \\
+$\phi^{-1}(1 + (X-1)^2)$ ? we use the matrix to find the coordinates: $1+ (X-1)^2 = 2 -2X +X^2$ \\
+\[\frac{1}{6} \begin{pmatrix} 6 & -3 & 0 \\ 0 & 3 & -2 \\ 0 & 0 & 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix}_B = \frac{1}{6} \begin{pmatrix} 18 \\ -8 \\ 2 \end{pmatrix}_B = \begin{pmatrix} 3 \\ -\frac{4}{3} \\ \frac{1}{3} \end{pmatrix}_B\]
+\[ \exists ! Q \in \mathbb{R}[X], \phi(Q) = \mathbb{R} \quad Q(X) = 3 - \frac{4}{3}X - \frac{1}{3}X^2\]
 \end{document}
