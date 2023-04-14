@@ -2,7 +2,7 @@
 Generic mathematics lessons for students of engineering or prep schools
 
 ## Contents
-- [ ] [Chapter 12: Linear Maps](https://github.com/FireGh0st/CM/blob/main/Math/Linear%20Maps.pdf)
+- [x] [Chapter 12: Linear Maps](https://github.com/FireGh0st/CM/blob/main/Math/Linear%20Maps.pdf)
 - [ ] [Chapter 13: Matrix](https://github.com/FireGh0st/CM/blob/main/Math/Matrix.pdf)
 
 # Special thanks
