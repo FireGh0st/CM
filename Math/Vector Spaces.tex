@@ -21,8 +21,24 @@
 
 \section{Introduction}
 \subsection{General approach}
+Studying Vector spaces will allow us to notice general theorems that can be applied to many mathematical structures.
 \subsection{Definition}
+A vector space is a set whose elements, often called vectors, may be added together and multiplied ("scaled") by numbers called scalars.
 \subsection{Notation}
+A $\mathbb{K}-Vector\space Space$ is non-empty set $E$ that has :
+\begin{itemize}
+    \item An internal law, which is an map of $E$ x $E$ : \\
+    \begin{tikzpicture}[node distance=1mm]
+        \node (center) at (0,0) {};
+        \node (functionName) at (4, -1) {};
+        \node[right = of functionName] (domain) {$E \times E$};
+        \node[right = 1cm of domain] (codomain) {$E$};
+        \node[below = 2mm of domain] (element) {$(u , v)$};
+        \node at (element-|codomain) (image) {$u+v$};
+        \draw[->] (domain) -- (codomain);
+        \draw[|->] (element) -- (image);
+    \end{tikzpicture}
+\end{itemize}
 \subsection{Properties}
 \section{Vector Sub-Spaces}
 \subsection{Definition}
@@ -35,7 +51,13 @@
 \section{Families}
 \subsection{Free Family}
 \subsection{Spanning Family}
-\section{Bases}
+\section{Basis}
 \section{Dimension of a Vss}
+\section{Proofs}
+\subsection{Intersection of linear subspaces}
+\subsection{Sum of linear subspaces}
+\subsection{Spanned linear subspaces}
+\subsection{Basis}
+\subsection{Existence of a basis in a finite dimention}
 
 \end{document}
