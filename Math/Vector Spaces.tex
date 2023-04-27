@@ -27,7 +27,7 @@ A vector space is a set whose elements, often called vectors, may be added toget
 \subsection{Notation}
 A $\mathbb{K}-Vector\space Space$ is non-empty set $E$ that has :
 \begin{itemize}
-    \item An internal law, which is an map of $E$ x $E$ : \\
+    \item An internal law, which is an map of $E$ x $E$ in $E$: \\
     \begin{tikzpicture}[node distance=1mm]
         \node (center) at (0,0) {};
         \node (functionName) at (4, -1) {};
@@ -38,13 +38,68 @@ A $\mathbb{K}-Vector\space Space$ is non-empty set $E$ that has :
         \draw[->] (domain) -- (codomain);
         \draw[|->] (element) -- (image);
     \end{tikzpicture}
+    \item An external law, which is an map of $\mathbb{K}$ x $E$ in $E$: \\
+    \begin{tikzpicture}[node distance=1mm]
+        \node (center) at (0,0) {};
+        \node (functionName) at (4, -1) {};
+        \node[right = of functionName] (domain) {$\mathbb{K} \times E$};
+        \node[right = 1cm of domain] (codomain) {$E$};
+        \node[below = 2mm of domain] (element) {$(\lambda , u)$};
+        \node at (element-|codomain) (image) {$\lambda \cdot u$};
+        \draw[->] (domain) -- (codomain);
+        \draw[|->] (element) -- (image);
+    \end{tikzpicture}
+\end{itemize}
+($\mathbb{K}$ is a set, often $\mathbb{R}$)\\ \\
+The elements of $E$ are called \underline{vectors}\\
+The elements of $\mathbb{K}$ are called \underline{scalars}\\
+The neutral element $0_E$ is also called the null vector\\
+The symmetrical $-u$  is also called the opposite\\
+The internal composition law on $E$, denoted $+$, is the addition\\
+The external composition law on $E$ is the multiplication by a scalar\\ \\
+axioms relative to the internal law : 
+\begin{itemize}
+    \item $0_E$ is unique
+    \item $-u$ is unique
+\end{itemize}
+\clearpage
+\subsection{Properties}
+To know is a space is a vector space, there is properties that need to match up.\\
+\begin{itemize}
+    \item The internal law
+    \item The external law
+    \item Both laws together
+    \item The neutral element
+    \item It's symmetrical
+\end{itemize}
+\underline{This makes up 8 laws that need to be respected :}
+\begin{enumerate}
+    \item $u + v = v + u \space\space\space(\forall (u,v) \in E)$
+    \item $u + (v + w) = (u + v) + w \space\space\space(\forall (u,v,w) \in E)$  
+    \item There exists a neutral element $0_E \in E$ so that $u + 0_E = u \space\space\space(\forall u \in E)$
+    \item  All elements admit a symmetric $u'$ so that $u + u' = 0_E$. This element $u'$  is denoted $-u$ 
+    \item $1 \cdot u  = u \space\space\space(\forall u\in E)$
+    \item $\lambda \cdot (\mu \cdot u) = (\lambda \mu) \cdot u \space\space\space(\forall \space\lambda,\mu \in \mathbb{K} ,u \in E)$
+    \item $\lambda \cdot (v + u) = (\lambda \cdot v)  + (\lambda \cdot u) \space\space\space(\forall \space\lambda \in \mathbb{K} ,v,u \in E)$
+    \item $(\lambda + \mu) \cdot u = (\lambda \cdot u)  + (\mu \cdot u) \space\space\space(\forall \space\lambda,\mu \in \mathbb{K} ,u \in E)$
+\end{enumerate}
+
+\section{Vector Sub-Spaces}
+A sub space is very useful to prove that a set is a Vector space. We will see that a vector sub-space is vector space.
+\subsection{Definition}
+Let $E$ be a vector space,  $F$ is a subspace if and only if
+\begin{itemize}
+    \item $0_E \in F$
+    \item $u + v \in F$ $ \forall (u,v) \in F^2$
+    \item $\lambda \cdot u \in F$ $ \forall \lambda \in \mathbb{K},v \in F$
 \end{itemize}
 \subsection{Properties}
-\section{Vector Sub-Spaces}
-\subsection{Definition}
-\subsection{Properties}
+Showing that a space is a subspace of a bigger (or equal) vector space if enough to prove that it is itself a vector space.
 \section{Relations between Vs and Vss}
 \subsection{Linear Combinations}
+Let $v_1,v_2,...,v_n$, $n$ vectors from a vector space $E$. Then :\\
+
+
 \subsection{Vss Intersection}
 \subsection{Vss Sum}
 \subsection{Generated Vss}
