@@ -95,19 +95,49 @@ Let $E$ be a vector space,  $F$ is a subspace if and only if
 \end{itemize}
 \subsection{Properties}
 Showing that a space is a subspace of a bigger (or equal) vector space if enough to prove that it is itself a vector space.
-\section{Relations between Vs and Vss}
+\section{Relations between V. Space and V. SubSpace}
 \subsection{Linear Combinations}
 Let $v_1,v_2,...,v_n$, $n$ vectors from a vector space $E$. Then :\\
+Any vector of the form :
+\[u = \lambda_1 v_1 + \lambda_2 v_2 + ... + \lambda_n v_n\]
+is called a \underline{Linear Combination} of the vectors $v_1, v_2, ..., v_n$\\ \\
+The scalars $\lambda_1, \lambda_2, ..., \lambda_n \in \mathbb{K}$ are the coefficients of the linear combination.\\\\
+Let $E$ be a vector space. Then $F$ is a vector sub space if and only if all linear combination of two element of $F$ also belongs to $E$.
 
-
-\subsection{Vss Intersection}
-\subsection{Vss Sum}
-\subsection{Generated Vss}
+\subsection{Vector SubSpace Intersection}
+\begin{itemize}
+    \item the intersection $\cap$ of two vector sub spaces \textbf{is} also a sub space
+    \item the union $\cup$ of two vector sub spaces \textbf{is not} a sub space
+\end{itemize}
+\subsection{Vector SubSpace Sum}
+Let $F$ and $G$ be two vectorial sub spaces of $E$\\
+The sum of two vectorial sub spaces is also a vss, in fact, it is the smallest vss including both  $F$ and $G$ \\
+$F$ and $G$ are in direct sum in $E$ if
+\begin{itemize}
+    \item $F \cap G = \{0_E\}$
+    \item $F + G = E$
+\end{itemize}
+We then denote $F \oplus G = E$\\
+$F$  and $G$ are called additional sub-spaces\\\\
+$F$ and $G$ are additional sub-spaces in $E$ if and only if any element of $E$ is uniquely written as the sum of an element of $F$ and an element of $G$\\
+SYSTEM TO DO HERE
 \section{Families}
 \subsection{Free Family}
+A family $\{v_1,v_2,...,v_p\}$  of $E$ is called a *free family*  (or *linearly independent family*) if all null linear combination\\
+\[\lambda_1v_1 + \lambda_2v_2 + ... + \lambda_pv_p = 0\]\\
+is such that all $\lambda$ coefficients are null.
+
+The opposite (there exists a null linear combination with at least 1 coefficient that is not null) is called a \underline{linked family} or a \underline{linearly dependent family.}\\
+
+Let $E$ a $\mathbb{K}$-vector space,\\
+A family $F = \{v_1,v_2,...,v_p\}$  with $p \geq 2$ vectors of $E$ is a linked family iff at least one vector is a linear combination of the other vectors
+
 \subsection{Spanning Family}
+A family $\{v_1,v_2,...,v_p\} $ is a generative family of $E$ if all vector of $E$ is a linear combination of the vectors $v_1,v_2,...,v_p$ \\
+\[\forall x \in E, \exists (\lambda_1,\lambda_2,...,\lambda_n) \in \mathbb{K}^n: x =\lambda_1x_1 + \lambda_2x_2 + ... + + \lambda_nx_n\]\\
+To prove that a family spans a vector space, we need to find the solutions $\lambda_1,...,\lambda_n$ of the equation given just above.
 \section{Basis}
-\section{Dimension of a Vss}
+\section{Dimension of a Vector SubSpace}
 \section{Proofs}
 \subsection{Intersection of linear subspaces}
 \subsection{Sum of linear subspaces}
