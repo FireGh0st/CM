@@ -2,7 +2,7 @@
 \usepackage{lipsum}
 \title{Matrix Chap. 13} %Titre du fichie
 \author{FireGhost} %Auteur du fichier
-
+\usepackage{blkarray}
 \usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
 \begin{document}
 \titre{Chapter 13: Matrix} %Titre du fichier .pdf
@@ -544,9 +544,11 @@ With the same function as before: \\
     \node[right = 1.5cm of domain] (codomain) {$\mathbb{R}^3$};
     \node[below = 5mm of domain] (element) {$\begin{pmatrix} x \\ y \end{pmatrix}$};
     \node at (element-|codomain) (image) {$\begin{pmatrix} x + y \\ 2x + 4y \\ -3y \end{pmatrix}$};
+    
     \draw[->] (domain) -- (codomain);
     \draw[|->] (element) -- (image) ;
 \end{tikzpicture}\\
+
 And with the same basis as before:
 $B = (\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$ and $B' = (\begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix})$ \\
 
@@ -846,4 +848,53 @@ Now find $Q \in \mathbb{R}_2[X], \phi(Q)(X) = 1 + (X-1)^2$ \\
 $\phi^{-1}(1 + (X-1)^2)$ ? we use the matrix to find the coordinates: $1+ (X-1)^2 = 2 -2X +X^2$ \\
 \[\frac{1}{6} \begin{pmatrix} 6 & -3 & 0 \\ 0 & 3 & -2 \\ 0 & 0 & 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ -2 \\ 1 \end{pmatrix}_B = \frac{1}{6} \begin{pmatrix} 18 \\ -8 \\ 2 \end{pmatrix}_B = \begin{pmatrix} 3 \\ -\frac{4}{3} \\ \frac{1}{3} \end{pmatrix}_B\]
 \[ \exists ! Q \in \mathbb{R}[X], \phi(Q) = \mathbb{R} \quad Q(X) = 3 - \frac{4}{3}X - \frac{1}{3}X^2\]
+\newpage
+\section{Important Proof}
+\fbox{
+\begin{minipage}{0.9\textwidth}   
+    \subsection{Proposition}
+    Let $n$ and $p$ be two non-zero natural numbers, $E$ and $F$ two finite-dimensional vector spaces over $\mathbb{R}$ such that $dim(E) = p$ and $dim(F) = n$.\\
+    Let $B = (e_1, \dots , e_p)$ be a basis of $E$ and $B' = (\epsilon_1, \dots , \epsilon_n)$ a basis of $F$.\\
+    Consider $f \in \mathcal{L}(E,F)$ and $A = Mat_{B,B'}(f) = (a_{ij}).$\\
+    For all $u \in E$, let $X$ denote the column matrix containing the coordinates of $u$ in basis $B$ and $Y$ the coordinates of $f(u)$ in basis $B'$.\\
+    Then,
+    \[Y = AX\]
+
+\end{minipage}}
+\subsubsection{Remarks:}
+\begin{enumerate}
+    \item Note that $Y = AX \Longleftrightarrow Mat_{B'}(f(u)) = Mat_{B,B'}(f) \cdot Mat_B(u)$
+    \item $A = Mat_{B,B'}(f) = (a_{ij})$. The columns of $A$ contain the coordinates of the vectors $f(e_j)$ in basis $B'$:
+    \[
+\begin{blockarray}{cccc}
+f(e_1) &   & f(e_p)  \\
+\begin{block}{cccc}
+    \downarrow &   & \downarrow  \\
+  \end{block}
+\begin{block}{(ccc)c}
+  a_{1,1} & \dots & a_{1,p} & \leftarrow  \text{ coefficient of } \epsilon_1 \\
+    \vdots & \ddots & \vdots & \\
+    a_{n,1} & \dots & a_{n,p} & \leftarrow  \text{ coefficient of } \epsilon_n \\
+\end{block}
+\end{blockarray}
+ \]
+ that is, $\forall j \in \llbracket 1,p \rrbracket$, $f(e_j) = a_{1,j} \epsilon_1 + \dots + a_{n,j} \epsilon_n$.
+ \item $A \in \mathcal{M}_{n,p}(\mathbb{R})$, $X \in \mathcal{M}_{p,1}(\mathbb{R})$ and $Y \in \mathcal{M}_{n,1}(\mathbb{R})$.
+\end{enumerate}
+\subsubsection{Proof:}
+Let $u \in E$.
+\begin{itemize}
+    \item Since $B$ is a basis of $E$:
+    \[\exists ! (\lambda_1, \dots , \lambda_p) \in \mathbb{R}^p, u = \lambda_1 e_1 + \dots + \lambda_p e_p\]
+    Then $X = \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_p \end{pmatrix}$.
+    \item Using the linearity of $f$, we get:
+    \begin{align*}
+        f(u) &= \lambda_1 f(e_1) + \dots + \lambda_p f(e_p) \\
+        &= \lambda_1 (a_{1,1} \epsilon_1 + \dots + a_{n,1} \epsilon_n) + \dots + \lambda_p (a_{1,p} \epsilon_1 + \dots + a_{n,p} \epsilon_n) \\
+        &= (\lambda_1 a_{1,1} + \dots + \lambda_p a_{1,p}) \epsilon_1 + \dots + (\lambda_1 a_{n,1} + \dots + \lambda_p a_{n,p}) \epsilon_n \\
+    \end{align*}
+    It follows that $Y = \begin{pmatrix} \lambda_1 a_{1,1} + \dots + \lambda_p a_{1,p} \\ \vdots \\ \lambda_1 a_{n,1} + \dots + \lambda_p a_{n,p} \end{pmatrix} = 
+    \begin{pmatrix} a_{1,1} & \dots & a_{1,p} \\ \vdots & \ddots & \vdots \\ a_{n,1} & \dots & a_{n,p} \end{pmatrix}
+    \begin{pmatrix} \lambda_1 \\ \vdots \\ \lambda_p \end{pmatrix} = AX$.
+\end{itemize}
 \end{document}
