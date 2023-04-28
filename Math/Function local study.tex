@@ -53,6 +53,52 @@ Let $f$ be a function from $I \subset R$ to $R$, we say that $f$ is continuous o
             x < a
         \end{smallmatrix}}f(x) 
     \end{align*}
-    \item $f$ continuous over $I$: \\ we say $f$ is continuous over $I \subset R$ if and only if $\forall a \in I$,$f$ is continuous at $a$
+    \item $f$ continuous over $I$: \\ we say $f$ is continuous over $I \subset R$ if and only if $\forall a \in I$,$f$ is continuous at $a$.
 \end{enumerate}
+\subsection{Intermediate value theorem}
+Let $f$ be a function continuous over $I \subset R$ and $(a,b) \in I^2$. if $f(a) f(b) < 0$ then there exists (at least one) $c$ from $]a,b[$ such that $f(c) = 0$.
+\subsubsection{Examples}
+\begin{minipage}{0.4\textwidth}  
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %Straight Lines [id:da24929647938311184] 
+        \draw  [->]  (189.3,160) -- (189.3,42.05) node[above] {$x$};
+        %Straight Lines [id:da4428013785785254] 
+        \draw  [->]  (151.6,132) -- (280,132) node[right] {$y$};
+        %Straight Lines [id:da03148052252332034] 
+        \node (a) at (200,150) {$a$};
+        \node (b) at (270,60.55) {$b$};
+        \draw[dashed,line width=1.1pt]  (205,155) -- (265,65) ;
+        \node (text) at (195,190) {must intersect the x-axis};
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+    Second example: $f(x) = x^2-2x+1$\\
+    $f(x) = x^2 \cos(x)+x\sin(x)+1=0$ does f have any solutions?\\
+    $I = [0,\pi]$ $f(a=0)=1$ and $f(b=\pi)=-\pi^2+1<0$
+    \begin{enumerate}
+        \item $f: x \mapsto f(x)$ is constant over $I \subset \mathbb{R}$.
+        \item $f(a) \times f(b) < 0$. 
+    \end{enumerate}    
+    IVT $\Rightarrow \exists c \in ]0,\pi[, f(c) = 0$.
+\end{minipage}
+\section{Image of an interval by a continuous function}
+Let $f : I \subset \mathbb{R} \to \mathbb{R}$ and $A \subset I$.\\
+We call image of $A$ by $f$ and denote $f(A) : f(A) = \{f(x), x \in A\}$.
+\subsection{Remark}
+$\forall y \in f(A), \exists x \in A, y = f(x)$.
+Example: $f: x \mapsto x^2$ and $A = [-3,2] \rightarrow f(A) = [0,9]$.
+\subsection{Proposition}
+\begin{itemize}
+    \item The image of an interval by a continuous function is an interval.
+    \item The image of a segment $([a,b])$ by a continuous function is a segment.
+    counter example: $f: x \mapsto \frac{1}{x}$ (continuous over $\mathbb{R}^*_+$) \quad
+    $f(]0,1] \subset \mathbb{R}^*_+) = [1,+\infty[$
+\end{itemize}
+\subsection{Corollary}
+Let $f$ be a continuous function over segment $[a,b]$. Then $f([a,b]) = [m,M]$ where $m$ and $M$ are respectively the minimum and maximum of $f$ over $[a,b]$.
+\section{Differentiability}
+All function below are of type $f: I \to \mathbb{R}$ where $I$ is an interval of $\mathbb{R}$ containing at least two points.
+\subsection{Definition}
+we say that $f$ is differentiable at $a$ if the following quantity $\frac{f(x)-f(a)}{x-a}$ (the increasing rate of $f$ at $a$) has a finite limit $l$ at $a$.\\
+If so, then $f$ is differentiable at $a$ and ...
 \end{document}
