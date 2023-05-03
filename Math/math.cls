@@ -1,7 +1,7 @@
 \LoadClass[a4paper,12pt]{article} % Classe du document
 
 %--------------------- Packages ------------------------
-
+\usepackage[dvipsnames]{xcolor}
 \RequirePackage[english]{babel} %Langue du document
 \RequirePackage[utf8]{inputenc} %Caractères spéciaux
 \RequirePackage[section]{placeins}%Pour placement de section
