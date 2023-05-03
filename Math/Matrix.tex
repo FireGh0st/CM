@@ -373,7 +373,7 @@ Hence we have (in case of A invertible): $A \cdot A^{-1} = A^{-1} \cdot A = I_n$
 The set of invertible matrices of $M_{n}(\mathbb{K})$ is denoted $GL_n(\mathbb{K})$
 \subsubsection{How to find the inverse of a matrix}
 We will use the following system:
-Where $A \in M_{n}(\mathbb{K}), (U,V) \in M_{n,1}(K)^2$:
+Where $A \in M_{n}(\mathbb{K}), (U,V) \in M_{n,1}(\mathbb{K})^2$:
 \[A \cdot U = V  \]
 By solving this system (Gauss elimination algorithm) when $A$ is invertible, we will have:
 \[ U = A^{-1} \cdot V \]
@@ -384,7 +384,7 @@ By solving this system (Gauss elimination algorithm) when $A$ is invertible, we 
         0 & 1 & 1 \\
         1 & 1 & 0 
         \end{pmatrix} 
-        A \cdot X = U \Rightarrow& 
+        A \cdot U = V \Rightarrow& 
         \begin{pmatrix}
             1 & 0 & 1 \\
             0 & 1 & 1 \\
