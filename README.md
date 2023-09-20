@@ -2,6 +2,7 @@
 Generic mathematics lessons for students of engineering or prep schools
 
 ## Contents
+### First year
 - [ ] [Chapter 1: Prerequisites](https://github.com/FireGh0st/CM/)
 - [ ] [Chapter 2: Integration](https://github.com/FireGh0st/CM/)
 - [ ] [Chapter 3: Counting](https://github.com/FireGh0st/CM/)
@@ -15,6 +16,10 @@ Generic mathematics lessons for students of engineering or prep schools
 - [ ] [Chapter 11: Vector Spaces](https://github.com/FireGh0st/CM/blob/main/Math/Vector%20Spaces.pdf)
 - [x] [Chapter 12: Linear Maps](https://github.com/FireGh0st/CM/blob/main/Math/Linear%20Maps.pdf)
 - [ ] [Chapter 13: Matrix](https://github.com/FireGh0st/CM/blob/main/Math/Matrix.pdf)
+
+### Second year
+
+- [ ] [Chapter 1: Numerical Series](https://github.com/FireGh0st/CM/blob/main/Math/Numerical%20Series.pdf)
 
 # Special thanks
 A big thank you to "Monsieur" (La__plume) who reads, corrects my lessons and helps me in latex

@@ -1,0 +1,116 @@
+\documentclass[notitlepage]{math}
+\usepackage{lipsum}
+\usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
+\usepackage{newunicodechar}
+
+\title{Numerical Series Chap. 1} %Titre du fichie
+\author{FireGhost} %Auteur du fichier
+
+
+\newcommand\Warning{%
+ \makebox[1.4em][c]{%
+ \makebox[0pt][c]{\raisebox{.1em}{\small!}}%
+ \makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}%
+
+\newunicodechar{⚠}{\Warning}
+
+\begin{document}
+\titre{Chapter 1: Numerical Series} %Titre du fichier .pdf
+\UE{Numerical Series} %Nom de la UE
+
+\fairetitre
+\fairemarges
+% subsubsubsection
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+
+\newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}} % Minus sign
+
+\section{Vocabulary}
+In this chapter, we will use CVG for Convergence and DVG for Divergence. We will also use GT for General Term.
+
+\section{General approach Convergence and Divergence}
+\subsection{Definition}
+Let $\bf(U_n)_{n \in \mathbb{N}}$ a sequence of real numbers, we call series of general term $\bf U_k$ and denote $\bf \sum U_k$ 
+the sequence of partial sums $ \bf (S_n)_{n \in \mathbb{N}}$ where for any integer $\bf n \in \mathbb{N}$, $ \bf S_n = {\sum\limits_{k=0}^n U_k}$.
+We say $\bf \sum U_k$ is convergent if and only if $\bf (S_n)_{n \in \mathbb{N}}$ is convergent.
+\subsubsection{Example: the geometric series}
+Let $\bf q \in \mathbb{R}^\star$ and let us consider the series $\bf \sum q^k$. We have:\\
+\\
+    $\forall n \in \mathbb{N}, S_n = \sum\limits_{k=0}^n q^k = \begin{array}{|rl}
+        \frac{1 - q^{n+1}}{1 - q} & \text{if } q \neq 1  \implies
+        \begin{array}{|r}
+            \text{if } \minus 1 < q < 1, \sum\limits_{k=0}^{+\infty} q^k = \frac{1}{1-q} \sum U_k \text{: CVG} \\
+            \text{if } q > 1 \text{ or } q < \minus 1, \sum U_k \text{: DVG} 
+        \end{array} \\
+        (n + 1) & \text{if } q = 1 \implies \sum U_k \text{: DVG}
+    \end{array}$
+
+\subsection{Propositions}
+Let $\bf \sum U_k$ and $\bf \sum V_k$ two series of general terms and $\bf \lambda \in \mathbb{R}$. We have:
+\begin{itemize}
+    \item If [$\bf \sum U_k$ CVG and $\bf \sum V_k$ CVG], then $\bf \sum (U_k + V_k)$ CVG
+    \item If [$\bf \sum U_k$ CVG], then $\bf \sum \lambda U_k$ CVG
+    \item If [$\bf \sum U_k$ CVG and $\bf \sum V_k$ DVG], then $\bf \sum (U_k + V_k)$ DVG
+    \item ⚠ $\bf \sum U_k$ DVG and $\bf \sum V_k$ DVG \underline{does not imply} $\bf \sum (U_k + V_k)$ DVG
+\end{itemize}
+
+\subsection{Sum and Remainder of a convergent series}
+Let $\bf \sum U_k$ a \underline{convergent series}. We call sum of the series $\bf \sum U_k$ 
+the following real number: $\bf \sum\limits_{k=0}^{+\infty} U_k = \lim\limits_{n \to +\infty} S_n$ where $\bf {S_n} = \sum\limits_{k=0}^n U_k$.
+And we call remainder of the series $\bf \sum U_k$ sequence $\bf (R_n)$ defined as follows:
+\[ \forall n \in \mathbb{N}, R_n = \sum\limits_{k=n+1}^{+\infty}\]
+\subsubsection{Example}
+$\bf \sum q^k$ CVG $\Leftrightarrow \minus 1 < q < 1$ : $\bf S = \lim\limits_{n \to +\infty} S_n = \frac{1}{1 - q}$
+
+\subsection{Convergence necessary condition}
+\subsubsection{Proposition}
+Let $\bf \sum (U_k)_{k \in \mathbb{N}}$ a sequence. We have:
+\[ \sum U_k \text{ CVG } \begin{array}{ r }\implies \\ \not\Longleftarrow \end{array} \left( U_k \xrightarrow[k \to +\infty]{} 0 \right) \]
+\subsubsection{Example}
+\begin{itemize}
+    \item Harmonic series: $\bf \sum \frac{1}{n}$, $\bf (\frac{1}{n}) \xrightarrow[n \to +\infty]{} 0$ but $\bf \sum \frac{1}{n}$ DVG
+    \item $\bf \sum \frac{e^n}{n^{2023}}$, $\frac{e^n}{n^{2023}} \xrightarrow[n \to +\infty]{} +\infty \implies \sum \frac{e^n}{n^{2023}}$ DVG
+    \end{itemize}
+
+\subsection{Positive Term Series (P.T.S.)}
+\subsubsection{Definition}
+Let $\bf \sum U_k$ a series. We say $\bf \sum U_k$ is a P.T.S., 
+if and only if $\bf \forall k \in \mathbb{N}, U_k \geq 0$.\\
+We say $\bf \sum U_k$ is a P.T.S. from $\bf p \in \mathbb{N}$ onwards,
+if and only if $\bf \forall k \in \mathbb{N}, k \geq p \implies U_k \geq 0$.
+\subsubsection{Propositions}
+\begin{itemize}
+    \item Let $\bf \sum U_k$ a P.T.S. and $\bf (S_n)_{n \in \mathbb{N}}$ the associated partial sum sequence. Then:
+    \[ \sum U_k \text{ CVG } \Leftrightarrow (S_n)_{n \in \mathbb{N}} \text{ is upper-bounded} \]
+    \item Let $\bf \sum U_k$ and $\bf \sum V_k$ two series such that: \\
+    $\bf \forall k \in \mathbb{N}, 0 \leq U_k \leq V_k$. Then:
+    \begin{enumerate}
+        \item If $\bf \sum V_k$ CVG, then $\bf \sum U_k$ CVG
+        \item If $\bf \sum U_k$ DVG, then $\bf \sum V_k$ DVG
+    \end{enumerate}
+\end{itemize}
+\paragraph{Example}
+What's the nature of $\bf \sum \frac{1}{\lvert n \cdot \sin(n) \rvert}$ ?\\
+
+\noindent $\forall n \in \mathbb{N}^\star, 0 < \lvert \sin(n) \rvert \leq 1 \implies 0 < \frac{1}{n} \leq \frac{1}{\lvert n \cdot \sin(n) \rvert}$\\
+$\bf \sum \frac{1}{n}$ (Harmonic) DVG $\implies \bf \sum \frac{1}{\lvert n \cdot \sin(n) \rvert}$ DVG
+
+\section{Riemann's series}
+\subsection{Definition}
+We call Riemann's series any series of General Terms (GT) $\bf \sum \frac{1}{n^\alpha}$ where $\bf \alpha \in \mathbb{R}$.\\
+\subsection{Theorem (Riemann)}
+Let $\bf \alpha \in \mathbb{R}$. Then:
+\[ \sum \frac{1}{n^\alpha} \text{ CVG } \Longleftrightarrow \alpha > 1 \]
+\subsubsection{Example}
+\begin{itemize}
+    \item $\bf \sum \frac{1}{\sqrt{2}} = \sum \frac{1}{2^{\frac{1}{2}}} \implies$ DVG 
+    \item $\bf \sum \frac{1 + cos(n)}{n^4}$: $\forall n \in \mathbb{N}^\star, 0 \leq 1 + cos(n) \leq 2 \implies 0 \leq \frac{1 + cos(n)}{n^4} \leq \frac{2}{n^4}$\\
+    And $\bf \sum \frac{2}{n^4}$ of same nature as $\bf \sum \frac{1}{n^4}$ (Riemann's series) CVG $\implies \bf \sum \frac{1 + cos(n)}{n^4}$ CVG
+\end{itemize}
+\end{document}
