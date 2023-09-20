@@ -80,7 +80,15 @@ $\forall u \in E$ and $\forall \alpha \in \mathbb{K}$ we have:
     \item $\alpha \cdot u = 0_E \Leftrightarrow \alpha = 0_{\color{red}\mathbb{K}}$ or $u = 0_{\color{red}E}$
 \end{enumerate}
 \subsubsection{Example}
-...
+\begin{enumerate}
+    \item $E = \mathbb{R}^2$, $U = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \in \mathbb{R}^2$
+    \item $\mathbb{R}^3 , \mathbb{R}^4, \dots , \mathbb{R}^n$ are $\mathbb{R}-VS$
+    \item $\mathbb{R}[X]:$ Set of polynomials \\
+    $0_{\mathbb{R}[X]}: \mathbb{R}_2[X] = \left\{aX^2 + bX + c , (a,b,c) \in \mathbb{R}^3\right\}$\\
+    $\mathbb{R}_2$ means: "at least max2", here "a" can be 0
+    \item $\mathbb{R}^\mathbb{N}$ and $\mathbb{R}^\mathbb{R}$ are $\mathbb{R}$-VS \\ \\
+    ex: $\left.\left(\frac{1}{n}\right)_{n\in\mathbb{N}^\ast}\right\}$ VS: 8 Property are check
+\end{enumerate}
 \subsection{Vector Subspaces (= linear subspaces)}
 \subsubsection{Definition}
 Let $E$ be a $\mathbb{K}$-Vector Space:\\
@@ -102,12 +110,80 @@ $F_1 = \left\{\begin{pmatrix} x\\ y\\ z \end{pmatrix} \in \mathbb{R}^3, x + y + 
 $0_E \notin F_1 \Longrightarrow F_1$ is not a Vector SubSpace of $E$\\
 $\forall (u, v) \in {F'}_1^2$, $\forall \alpha \in \mathbb{R}$, $u = \begin{pmatrix} x\\ y\\ z \end{pmatrix}$ and $v = \begin{pmatrix} x'\\ y'\\ z' \end{pmatrix}$\\
 $\alpha u + v = \alpha(x, y, z) + (x', y', z') = 0_E \in F'_1$
-$\Longrightarrow F'_1$ is a Vector SubSpace of $E$
-{\color{blue}TODO A MINIPAGE FOR THE EXAMPLE AND ADD THE OTHER EXAMPLES}
+$\Longrightarrow F'_1$ is a Vector SubSpace of $E$\\
+\\
+\noindent
+$F_2 = \left\{\begin{pmatrix} x\\ y \end{pmatrix} \in \mathbb{R}^2 {\color{green} \begin{cases} \in \mathbb{R}^3 \\ \ni 0_E \end{cases}},{\color{green}0_E \in } x y \ge 0\right\}$ \\
+$\left( \begin{pmatrix}
+    1 \\ 0 \end{pmatrix} , \begin{pmatrix}
+    0 \\ -1 \end{pmatrix}\right) \in {F_2}^2$ \\
+$\begin{pmatrix}
+1 \\ 0 \end{pmatrix} + \begin{pmatrix}
+0 \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} \notin {F_2}^2$ Not closed by linear combination \\
+\\
+Exercise on your own: 
+$F_3 = \left\{P \in \mathbb{R}[X], P(2) = 0 \right\}$
+
+
+
 \paragraph{Proposition 2}
 Let $E$ be a Vector Space, $F$ and $G$ two Vector SubSpaces of $E$. Then:\\
 \begin{enumerate}
     \item $F \cap G \subset E$,    $F \cap G$ is a Vector SubSpace of $E$
-    \item {\color{blue}TO FINISH}
+    \item $\left.\begin{matrix}
+        F \text{ VSS of }E \implies 0_E \in F \\
+        G \text{ VSS of }E \implies 0_E \in G
+    \end{matrix} \text{ } \right| \implies 0_E \in F \cap G \implies F \cap G \ne \emptyset$
+    \item $\forall (u,v) \in F\cap G, \forall \alpha \in \mathbb{K}$ Then: $F$ close under linear combination
+    \\ 
+    $\left. \begin{matrix} \implies \alpha u + v \in F. \\ \text{So far for G }\implies \alpha u + v \in G  \end{matrix} \right\} \alpha u + v \in F\cap G $ \\ and $F\cap G$ is closed under linear combination.
 \end{enumerate} 
+\paragraph{Proposition 3}
+Let $E$ be a VS: $\{0_E\}$ (sigleton) is a VSS of $E$
+\paragraph{Proof:}
+\begin{enumerate}
+    \item $\{0_E\} \subset E$
+    \item $0_E \in \{0_E\} \implies \{0_E\} \ne \emptyset $
+    \item $ \forall (u,v) \in {\{0_E\}}^2, u = v = 0_E$ and $\forall \alpha \in \mathbb{K}, \alpha u = 0_E \implies \alpha u + v = 0_E \implies (\alpha u + v) \in \{0_E\}$
+\end{enumerate}
+\paragraph{Proposition 4}
+Let $(E, \oplus , \odot)$ be a VS and $F$ a VSS of $E$, then $F$ is a VS
+\subsection{Sum  of VSS}
+Let $E$ a $\mathbb{K}$-VS, $F$ and $G$ VSS of $E$, we say $H$ is the sum of $F$ and $G$ if:
+
+\[H = \left\{u \in E, \exists (v,w)  \in F \times G, u = v + w \right\}\]
+\subsection{Examples}
+\begin{enumerate}
+    \item $ E = \mathbb{R}^2, G = \left\{ \begin{pmatrix}
+        x \\ 0 \end{pmatrix}, x \in \mathbb{R} \right\}, 
+        H = \left\{ \begin{pmatrix} 0 \\ y \end{pmatrix}, y \in \mathbb{R} \right\}$ \\
+        $ G + H = \left\{ \begin{pmatrix} x \\ y \end{pmatrix}, (x,y) \in \mathbb{R}^2 = \mathbb{R}^2 \right\}$
+    \item $\left. \begin{matrix} 
+        F = \left\{ \begin{pmatrix} x \\ 0 \\ 0 \end{pmatrix},x \in \mathbb{R}   \right\}\\
+        G = \left\{ \begin{pmatrix} 0 \\ 0 \\ z \end{pmatrix},z \in \mathbb{R}   \right\}
+    \end{matrix} \right\}$ VSS of $\mathbb{R}^3$ \\
+    $F+G  = \left\{ \begin{pmatrix} x \\ 0 \\ z \end{pmatrix},(x,z) \in \mathbb{R}^2  \right\} \in \mathbb{R}^3 \ne \mathbb{R}^3$
+\end{enumerate}
+\subsection{Direct Sum}
+\subsubsection{Definition}
+Let $E$ a $\mathbb{K}$-VS, $F$ and $G$ two VSS of $E$,\\ we say that $F$ and $G$ are in direct sum if: 
+\[F\cap G = \{0_E\}\]
+\subsubsection{Notation}
+In that case we denote $F \oplus G$ instead of $ F + G$
+\subsubsection{Examples}
+\begin{enumerate}
+    \item Both of previous examples
+    \item $\left. \begin{matrix} 
+        F = \left\{ \begin{pmatrix} x \\ y \\ z \end{pmatrix},z = 0, x , y \in \mathbb{R}^2   \right\}\\
+        G = \left\{ \begin{pmatrix} x \\ 0 \\ z \end{pmatrix}, (x,y) \in \mathbb{R}^2   \right\}
+    \end{matrix} \right\}
+    \begin{pmatrix}
+        1 \\ 0 \\ 0 
+    \end{pmatrix} \in F \cap G    $ \\
+    $F+G$  Check\\
+    $F \oplus G$  Not bc $F \cap G \ne \{0_E\}$
+
+    
+
+\end{enumerate}
 \end{document}
