@@ -2,6 +2,8 @@
 \usepackage{lipsum}
 \usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
 \usepackage{newunicodechar}
+\usepackage{amsmath}
+
 
 \title{Numerical Series Chap. 1} %Titre du fichie
 \author{FireGhost} %Auteur du fichier
@@ -10,7 +12,7 @@
 \newcommand\Warning{%
  \makebox[1.4em][c]{%
  \makebox[0pt][c]{\raisebox{.1em}{\small!}}%
- \makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}%
+ \makebox[0pt][c]{\color{red}\LARGE$\bigtriangleup$}}}%
 
 \newunicodechar{⚠}{\Warning}
 
@@ -31,8 +33,13 @@
 
 \newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}} % Minus sign
 
-\section{Vocabulary}
+\section{Preamble}
+\subsection{Vocabulary}
 In this chapter, we will use CVG for Convergence and DVG for Divergence. We will also use GT for General Term.
+\subsection{Remark}
+⚠ Be careful, the series $\sum U_n$ is not the same as the sequence $(U_n)_{n \in \mathbb{N}}$.
+$\sum U_n$ is the series of general term $U_n$ and $(U_n)_{n \in \mathbb{N}}$ is the sequence $U_n$.
+
 
 \section{General approach Convergence and Divergence}
 \subsection{Definition}
@@ -78,13 +85,13 @@ Let $\bf \sum (U_k)_{k \in \mathbb{N}}$ a sequence. We have:
     \item $\bf \sum \frac{e^n}{n^{2023}}$, $\frac{e^n}{n^{2023}} \xrightarrow[n \to +\infty]{} +\infty \implies \sum \frac{e^n}{n^{2023}}$ DVG
     \end{itemize}
 
-\subsection{Positive Term Series (P.T.S.)}
-\subsubsection{Definition}
+\section{Positive Term Series (P.T.S.)}
+\subsection{Definition}
 Let $\bf \sum U_k$ a series. We say $\bf \sum U_k$ is a P.T.S., 
 if and only if $\bf \forall k \in \mathbb{N}, U_k \geq 0$.\\
 We say $\bf \sum U_k$ is a P.T.S. from $\bf p \in \mathbb{N}$ onwards,
 if and only if $\bf \forall k \in \mathbb{N}, k \geq p \implies U_k \geq 0$.
-\subsubsection{Propositions}
+\subsection{Propositions}
 \begin{itemize}
     \item Let $\bf \sum U_k$ a P.T.S. and $\bf (S_n)_{n \in \mathbb{N}}$ the associated partial sum sequence. Then:
     \[ \sum U_k \text{ CVG } \Leftrightarrow (S_n)_{n \in \mathbb{N}} \text{ is upper-bounded} \]
@@ -95,22 +102,84 @@ if and only if $\bf \forall k \in \mathbb{N}, k \geq p \implies U_k \geq 0$.
         \item If $\bf \sum U_k$ DVG, then $\bf \sum V_k$ DVG
     \end{enumerate}
 \end{itemize}
-\paragraph{Example}
+\subsubsection{Example}
 What's the nature of $\bf \sum \frac{1}{\lvert n \cdot \sin(n) \rvert}$ ?\\
 
 \noindent $\forall n \in \mathbb{N}^\star, 0 < \lvert \sin(n) \rvert \leq 1 \implies 0 < \frac{1}{n} \leq \frac{1}{\lvert n \cdot \sin(n) \rvert}$\\
 $\bf \sum \frac{1}{n}$ (Harmonic) DVG $\implies \bf \sum \frac{1}{\lvert n \cdot \sin(n) \rvert}$ DVG
 
-\section{Riemann's series}
-\subsection{Definition}
+\subsection{Riemann's series}
+\subsubsection{Definition}
 We call Riemann's series any series of General Terms (GT) $\bf \sum \frac{1}{n^\alpha}$ where $\bf \alpha \in \mathbb{R}$.\\
-\subsection{Theorem (Riemann)}
+\subsubsection{Theorem (Riemann)}
 Let $\bf \alpha \in \mathbb{R}$. Then:
 \[ \sum \frac{1}{n^\alpha} \text{ CVG } \Longleftrightarrow \alpha > 1 \]
-\subsubsection{Example}
+\paragraph{Example}
 \begin{itemize}
     \item $\bf \sum \frac{1}{\sqrt{2}} = \sum \frac{1}{2^{\frac{1}{2}}} \implies$ DVG 
     \item $\bf \sum \frac{1 + cos(n)}{n^4}$: $\forall n \in \mathbb{N}^\star, 0 \leq 1 + cos(n) \leq 2 \implies 0 \leq \frac{1 + cos(n)}{n^4} \leq \frac{2}{n^4}$\\
     And $\bf \sum \frac{2}{n^4}$ of same nature as $\bf \sum \frac{1}{n^4}$ (Riemann's series) CVG $\implies \bf \sum \frac{1 + cos(n)}{n^4}$ CVG
 \end{itemize}
+\subsection{Comparison criteria}
+\subsubsection{Proposition}
+Let $\bf \sum U_n$ and $\bf \sum V_n$ two P.T.S.
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item If $\bf U_n \underset{+\infty}{\sim} V_n$ then $\bf \sum U_n$ and $\bf \sum V_n$ are of same nature\\
+    \item If $\bf U_n = o(V_n)$ then [If $\bf \sum V_n$ CVG then $\bf \sum U_n$ CVG]
+\end{enumerate}
+\paragraph{Example}
+What's the nature of $\bf \sum U_n$ ?
+\begin{itemize}
+    \item $\bf U_n = e^{-\sqrt{n}}$:
+    $\begin{array}{rr}
+        \text{Step 1: }& n^2 \times U_n = \frac{n^2}{e^{\sqrt{n}}} = \frac{(\sqrt{n})^4}{e^{\sqrt{n}}} \xrightarrow[n \to +\infty]{} 0 \implies U_n = o(\frac{1}{n^2})\\
+        \text{Step 2: }& \sum \frac{1}{n^2} \text{ CVG (Riemann's series } \alpha = 2 > 1 \text{ )} \implies \sum U_n \text{ CVG}
+    \end{array}$\\ [\bigskipamount]
+    \item $\bf U_n = \ln(\frac{n+1}{n})$:
+    $\begin{array}[]{r}
+         \forall n \in \mathbb{N}^\star, \frac{n+1}{n} = 1 + \frac{1}{n}
+         \implies  \ln(1 + \frac{1}{n}) \underset{+\infty}{=} \frac{1}{n} + o(\frac{1}{n})\\[\bigskipamount]
+        ⚠ \implies 
+        \begin{array}{|rr}
+            \circled{1} & \forall n \in \mathbb{N}, U_n > 0 \text{ since } 1 + \frac{1}{n} > 1\\
+            \circled{2} & U_n \underset{+\infty}{=} \frac{1}{n}
+        \end{array}\\[\bigskipamount]
+        \implies \sum U_n \text{ and } \sum \frac{1}{n} \text{ of same nature} \\
+        \text{and } \sum \frac{1}{n} \text{ DVG (Harmonic series)}\\
+    \end{array}$
+\end{itemize}
+\subsubsection{Proposition}
+Let $\bf \sum U_n$ a numerical sequence. We have:\\
+\begin{tikzpicture}[node distance=1mm]
+    \node (Let) at (-2, 0) {};
+
+    \node[above right = -0.3cm and 0.5cm of Let] (domain) {$\sum$};
+    \node[right = -0.1mm of domain] (codomain) {$(U_{n+1} - U_n)$};
+    \node[right = 0.1mm of codomain] (Rcodomain) {CVG $\Longleftrightarrow (U_n)$ CVG};
+    \draw [decorate, decoration={brace, raise=2.5pt}] (codomain.north west) -- (codomain.north east) node [ midway,sloped,above = 0.15cm] {\tiny $W_n$};
+    
+\end{tikzpicture}
+
+\paragraph{Example}
+\begin{enumerate}
+    \item  $\begin{array}{r}
+        %\bf S_n = \sum\limits_{k=0}^{n} W_k = \sum\limits_{k=0}^n \left(U_{k+1} - U_k\right) &= \sum\limits_{k=0}^n U_{k+1} - \sum\limits_{k=0}^n U_k\\
+        %test &= \sum\limits_{k=1}^{n+1} U_k - \sum\limits_{k=0}^n U_k\\
+        \end{array}$
+        
+\end{enumerate}
+\subsection{Riemann's Rule}
+Let $\bf \sum U_n$ a \underline{Positive} numerical series.
+If $\bf \exists \alpha > 1 , n^\alpha \times U_n \underset{+\infty}{\sim} 0$ then $\bf \sum U_n$ CVG
+\subsubsection{Proof}
+$\bf \exists \alpha > 1, n^\alpha \times U_n \xrightarrow[n \to +\infty]{} 0 \implies \frac{U_n}{\frac{1}{n^\alpha}} \xrightarrow[n \to +\infty]{} 0$\\
+$\implies \left\{ \begin{array}{r|r}
+    U_n = o(\frac{1}{n^\alpha}) &\\
+    \text{and } &\\ 
+    \alpha > 1 & \left[ \sum \frac{1}{n^\alpha} \text{ CVG (Riemann's series)} \implies \sum U_n \text{ CVG} \right]\\
+    \text{and } &\\
+    \sum U_n \text{ P.T.S.}& \\
+\end{array} \right. $
+
+
 \end{document}
