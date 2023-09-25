@@ -49,9 +49,9 @@ We say $\bf \sum U_k$ is convergent if and only if $\bf (S_n)_{n \in \mathbb{N}}
 \subsubsection{Example: the geometric series}
 Let $\bf q \in \mathbb{R}^\star$ and let us consider the series $\bf \sum q^k$. We have:\\
 \\
-    $\forall n \in \mathbb{N}, S_n = \sum\limits_{k=0}^n q^k = \begin{array}{|rl}
+    $\forall n \in \mathbb{N}, S_n = \sum\limits_{k=0}^n q^k = \begin{array}{|ll}
         \frac{1 - q^{n+1}}{1 - q} & \text{if } q \neq 1  \implies
-        \begin{array}{|r}
+        \begin{array}{|l}
             \text{if } \minus 1 < q < 1, \sum\limits_{k=0}^{+\infty} q^k = \frac{1}{1-q} \sum U_k \text{: CVG} \\
             \text{if } q > 1 \text{ or } q < \minus 1, \sum U_k \text{: DVG} 
         \end{array} \\
@@ -131,16 +131,16 @@ Let $\bf \sum U_n$ and $\bf \sum V_n$ two P.T.S.
 What's the nature of $\bf \sum U_n$ ?
 \begin{itemize}
     \item $\bf U_n = e^{-\sqrt{n}}$:
-    $\begin{array}{rr}
+    $\begin{array}{ll}
         \text{Step 1: }& n^2 \times U_n = \frac{n^2}{e^{\sqrt{n}}} = \frac{(\sqrt{n})^4}{e^{\sqrt{n}}} \xrightarrow[n \to +\infty]{} 0 \implies U_n = o(\frac{1}{n^2})\\
         \text{Step 2: }& \sum \frac{1}{n^2} \text{ CVG (Riemann's series } \alpha = 2 > 1 \text{ )} \implies \sum U_n \text{ CVG}
     \end{array}$\\ [\bigskipamount]
     \item $\bf U_n = \ln(\frac{n+1}{n})$:
-    $\begin{array}[]{r}
+    $\begin{array}[]{l}
          \forall n \in \mathbb{N}^\star, \frac{n+1}{n} = 1 + \frac{1}{n}
          \implies  \ln(1 + \frac{1}{n}) \underset{+\infty}{=} \frac{1}{n} + o(\frac{1}{n})\\[\bigskipamount]
         ⚠ \implies 
-        \begin{array}{|rr}
+        \begin{array}{|ll}
             \circled{1} & \forall n \in \mathbb{N}, U_n > 0 \text{ since } 1 + \frac{1}{n} > 1\\
             \circled{2} & U_n \underset{+\infty}{=} \frac{1}{n}
         \end{array}\\[\bigskipamount]
@@ -162,11 +162,30 @@ Let $\bf \sum U_n$ a numerical sequence. We have:\\
 
 \paragraph{Example}
 \begin{enumerate}
-    \item  $\begin{array}{r}
-        %\bf S_n = \sum\limits_{k=0}^{n} W_k = \sum\limits_{k=0}^n \left(U_{k+1} - U_k\right) &= \sum\limits_{k=0}^n U_{k+1} - \sum\limits_{k=0}^n U_k\\
-        %test &= \sum\limits_{k=1}^{n+1} U_k - \sum\limits_{k=0}^n U_k\\
-        \end{array}$
-        
+    \item ⚠ General Example, limit calculation:
+     \begin{align*}
+        \bf S_n = \sum\limits_{k=0}^{n} W_k = \sum\limits_{k=0}^n \left(U_{k+1} - U_k\right) &= \sum\limits_{k=0}^n U_{k+1} - \sum\limits_{k=0}^n U_k\\
+        &= \sum\limits_{k=1}^{n+1} U_k - \sum\limits_{k=0}^n U_k\\
+        &= \left(\sum\limits_{k=1}^{n} U_k + U_{n+1}\right) - \left(U_0 + \sum\limits_{k=1}^n U_k\right)\\
+        Sn & = \sum\limits_{k=0}^n \left(U_{k+1} - U_k \right) = U_{n+1} - U_0
+        \end{align*}
+    \item \begin{tikzpicture}[node distance=1mm]
+        \node (Let) at (2, 0) {};
+    
+        \node[right = 0.5cm of Let] (domain) {$\sum$};
+        \node[right = -0.1mm of domain] (codomain) {$(\frac{1}{n+1}-\frac{1}{n})$};
+        \node[right = 0.1mm of codomain] (Rcodomain) {: $\begin{array}{|l}
+        \sum W_n \text{ of same nature as } \sum \left(\frac{1}{n}_{n \in \mathbb{N}^\star}\right) \left( \begin{array}{ll}
+            \frac{1}{n} \xrightarrow[n \to +\infty]{} 0 \text{ CVG}&\\
+            \text{So:}  \sum W_n \text{ CVG}&
+        \end{array} \right)\\
+        \text{ calculation of the limit: }\\
+        S = \lim\limits_{n \to +\infty} S_n = \sum\limits_{k=1}^{ +\infty} W_k = \lim\limits_{n \to +\infty} \left(\frac{1}{n+1} - 1\right) = -1
+        \end{array}$};
+    
+        \draw [decorate, decoration={brace, raise=2.5pt}] (codomain.north west) -- (codomain.north east) node [ midway,sloped,above = 0.15cm] {\tiny $W_n$};
+    \end{tikzpicture}
+    
 \end{enumerate}
 \subsection{Riemann's Rule}
 Let $\bf \sum U_n$ a \underline{Positive} numerical series.
