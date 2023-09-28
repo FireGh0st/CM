@@ -199,6 +199,55 @@ $\implies \left\{ \begin{array}{r|r}
     \text{and } &\\
     \sum U_n \text{ P.T.S.}& \\
 \end{array} \right. $
+\subsection{D'Alembert's Rule}
+Let $\bf (U_n)$ be a strictly positive sequence such that:
+\[ \frac{U_{n+1}}{U_n} \xrightarrow[n \to +\infty]{} \ell \in \mathbb{R}_+\cup \{+\infty\} \]
+Then:
+$\begin{array}{l}
+    \ell < 1 \implies \sum U_n \text{ CVG}\\
+    \ell > 1 \implies \sum U_n \text{ DVG}\\
+    \ell = 1 \implies \text{ no conclusion}    
+\end{array}$
+\subsubsection{Example}
+$\bf \sum \frac{1}{n!}$ : $\forall n \in \mathbb{N}, \frac{1}{n!} > 0$ (P.T.S.) and $\frac{U_{n+1}}{U_n} = \frac{\frac{1}{(n+1)!}}{\frac{1}{n!}} = \frac{1}{n+1} \xrightarrow[n \to +\infty]{} 0 < 1 \implies \sum \frac{1}{n!}$ CVG\\
 
-
+\subsection{Cauchy's Rule}
+Let $\bf (U_n)$ be a strictly positive sequence such that:
+\[ \sqrt[n]{U_n} \xrightarrow[n \to +\infty]{} \ell \in \mathbb{R}_+\cup \{+\infty\} \]
+Then:
+$\begin{array}{l}
+    \ell < 1 \implies \sum U_n \text{ CVG}\\
+    \ell > 1 \implies \sum U_n \text{ DVG}\\
+    \ell = 1 \implies \text{ no conclusion}
+\end{array}$
+\subsubsection{Example}
+$\bf \sum {(\frac{n}{n+1})^n}^2$: $\forall n \in \mathbb{N}, {(\frac{n}{n+1})^n}^2 > 0$ (P.T.S.), $\sqrt[n]{U_n} = \left({(\frac{n}{n+1})^n}^2\right)^{\frac{1}{n}} = (\frac{n}{n+1})^n = e^{n \ln(1 - \frac{n}{n+1})}$\\[0.2cm]
+$\ln(1 - \frac{n}{n+1}) \sim n \times (-\frac{n}{n+1}) \xrightarrow[n \to +\infty]{} -1 < 0 \implies \sqrt[n]{U_n} \xrightarrow[n \to +\infty]{} e^{-1} = \frac{1}{e} < 1 \underset{\text{Cauchy}}{\implies} \sum U_n$ CVG\\
+\subsection{Examples}
+% \begin{enumerate}[label=\protect\circled{\arabic*}]
+%     \item $\sum (1 + \frac{1}{n})^n$\\
+%     \item $\sum \left((1 + \frac{1}{n})^n - e\right)$\\
+%     \item $\sum n^{2023} \times e^{-n}$\\
+%     \item $\sum n! \times e^{-n}$\\
+% \end{enumerate}
+\section{Alternating Series}
+\subsection{Definition}
+Let $\bf (U_n) \in \mathbb{R}^\mathbb{N}$, we say $\bf (U_n)$ is an alternating sequence thus $\bf \sum U_n$ an alternating series, if there exists $\begin{array}{|l} \text{a positive} \\ \color{green}\text{a negative}\end{array}$ sequence $\bf (a_n)$ such that:
+\[\bf \forall n \in \mathbb{N}, \begin{array}{|l} U_{n} = (-1)^n \times a_n \\ \color{green} U_{n} = (-1)^{n+1} \times a_n \end{array}\]
+\subsubsection{Example}
+$\bf \sum \frac{(-1)^n}{n}$ is an alternating series because $\bf \forall n \in \mathbb{N}, \frac{(-1)^n}{n} = (-1)^n \times \frac{1}{n}$
+\subsection{Alternating Series Special Criteria (A.S.S.C.)}
+\subsubsection{Theorem}
+Let $\bf (U_n)$ an alternating sequence, such that:
+\[\bf \left. \begin{array}{l}
+    U_n \xrightarrow[n \to +\infty]{} 0\\
+    (\left\lvert U_n \right\rvert )_{n \in \mathbb{N}} \text{ is decreasing}
+\end{array} \right] \implies \sum U_n \text{ CVG}\]
+\subsubsection{Explanation}
+An alternating sequence is of the form 
+\begin{align*}
+    \bf U_n = (-1)^n \times a_n & \qquad \text{ or } & \bf U_n = (-1)^{n+1} \times a_n\\
+\bf \left\lvert U_n \right\rvert = \left\lvert (-1)^n \times a_n \right\rvert = \left\lvert a_n \right\rvert & \qquad \text{ or } & \bf \left\lvert U_{n} \right\rvert = \left\lvert (-1)^{n+1} \times a_{n} \right\rvert = \left\lvert a_{n} \right\rvert\\
+\text{So }& \bf (\left\lvert U_n \right\rvert )_{n \in \mathbb{N}} = (a_n)_{n \in \mathbb{N}}&\\
+\end{align*}
 \end{document}
