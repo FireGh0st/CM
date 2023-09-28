@@ -3,6 +3,7 @@
 \usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
 \usepackage{newunicodechar}
 \usepackage{amsmath}
+\usepackage{centernot}
 
 
 \title{Numerical Series Chap. 1} %Titre du fichie
@@ -78,7 +79,7 @@ $\bf \sum q^k$ CVG $\Leftrightarrow \minus 1 < q < 1$ : $\bf S = \lim\limits_{n 
 \subsection{Convergence necessary condition}
 \subsubsection{Proposition}
 Let $\bf \sum (U_k)_{k \in \mathbb{N}}$ a sequence. We have:
-\[ \sum U_k \text{ CVG } \begin{array}{ r }\implies \\ \not\Longleftarrow \end{array} \left( U_k \xrightarrow[k \to +\infty]{} 0 \right) \]
+\[ \sum U_k \text{ CVG } \begin{array}{ r }\implies \\ \centernot{\Longleftarrow} \end{array} \left( U_k \xrightarrow[k \to +\infty]{} 0 \right) \]
 \subsubsection{Example}
 \begin{itemize}
     \item Harmonic series: $\bf \sum \frac{1}{n}$, $\bf (\frac{1}{n}) \xrightarrow[n \to +\infty]{} 0$ but $\bf \sum \frac{1}{n}$ DVG
@@ -224,12 +225,24 @@ $\begin{array}{l}
 $\bf \sum {(\frac{n}{n+1})^n}^2$: $\forall n \in \mathbb{N}, {(\frac{n}{n+1})^n}^2 > 0$ (P.T.S.), $\sqrt[n]{U_n} = \left({(\frac{n}{n+1})^n}^2\right)^{\frac{1}{n}} = (\frac{n}{n+1})^n = e^{n \ln(1 - \frac{n}{n+1})}$\\[0.2cm]
 $\ln(1 - \frac{n}{n+1}) \sim n \times (-\frac{n}{n+1}) \xrightarrow[n \to +\infty]{} -1 < 0 \implies \sqrt[n]{U_n} \xrightarrow[n \to +\infty]{} e^{-1} = \frac{1}{e} < 1 \underset{\text{Cauchy}}{\implies} \sum U_n$ CVG\\
 \subsection{Examples}
-% \begin{enumerate}[label=\protect\circled{\arabic*}]
-%     \item $\sum (1 + \frac{1}{n})^n$\\
-%     \item $\sum \left((1 + \frac{1}{n})^n - e\right)$\\
-%     \item $\sum n^{2023} \times e^{-n}$\\
-%     \item $\sum n! \times e^{-n}$\\
-% \end{enumerate}
+\begin{enumerate}[label=\protect\circled{\arabic*}]
+    \item $\sum (1 + \frac{1}{n})^n$: $1 + \frac{1}{n} \centernot{\xrightarrow[n \to +\infty]{}} 0$ (don't have the necessary condition) $\implies \sum (1 + \frac{1}{n})^n$ DVG\\
+    \item $\sum \left((1 + \frac{1}{n})^n - e\right)$: 
+    \begin{enumerate}
+        \item   \begin{align*}
+             \left((1 + \frac{1}{n})^n - e\right) = e^{n \times \ln(1 + \frac{1}{n})} - e &= e^{n \times (\frac{1}{n} - \frac{1}{2n^2} + o(\frac{1}{n^2}))} - e \\
+             &= e^{1 - \frac{1}{2n} + o(\frac{1}{n})} - e \\
+             &= e \times e^{-\frac{1}{2n} + o(\frac{1}{n})} - e \\ &= e \times (1 - \frac{1}{2n} + o(\frac{1}{n})) - e \\ &= -\frac{e}{2n} + o(\frac{1}{n})
+            \end{align*}
+            So $\left((1 + \frac{1}{n})^n - e\right) \underset{+\infty}{\sim} -\frac{e}{2n}$ (Can't use P.T.S. property)
+        \item $\sum -\frac{e}{2n} < 0$ for $ n \in \mathbb{N}^\star$
+        \item $\exists p \in \mathbb{N}^\star, (n \geq p) \implies (\left((1 + \frac{1}{n})^n - e\right) \leq 0)$ (Same sign as $\sum -\frac{e}{2n}$) \\[0.2cm]
+        $\implies \sum \left((1 + \frac{1}{n})^n - e\right)$ has the same nature as $\sum -\frac{e}{2n}$ wich is of same nature as $\sum \frac{1}{n}$ DVG
+    \end{enumerate}
+    \item $\sum n^{2023} \times e^{-n} = \sum \frac{n^{2023}}{e^n}$: $n^{2023} = o(e^n)$ (growth comparison)
+    $n^{2025} \times e^{-n} = \frac{\frac{n^{2023}}{e^n}}{\frac{1}{n^2}} \xrightarrow[n \to +\infty]{} 0 \implies U_n = o(\frac{1}{n^2}) \underset{\text{Riemann} (\alpha = 2>1)}{\implies} \sum U_n$ CVG\\
+    \item $\sum n! \times e^{-n}$\\
+\end{enumerate}
 \section{Alternating Series}
 \subsection{Definition}
 Let $\bf (U_n) \in \mathbb{R}^\mathbb{N}$, we say $\bf (U_n)$ is an alternating sequence thus $\bf \sum U_n$ an alternating series, if there exists $\begin{array}{|l} \text{a positive} \\ \color{green}\text{a negative}\end{array}$ sequence $\bf (a_n)$ such that:
@@ -250,4 +263,14 @@ An alternating sequence is of the form
 \bf \left\lvert U_n \right\rvert = \left\lvert (-1)^n \times a_n \right\rvert = \left\lvert a_n \right\rvert & \qquad \text{ or } & \bf \left\lvert U_{n} \right\rvert = \left\lvert (-1)^{n+1} \times a_{n} \right\rvert = \left\lvert a_{n} \right\rvert\\
 \text{So }& \bf (\left\lvert U_n \right\rvert )_{n \in \mathbb{N}} = (a_n)_{n \in \mathbb{N}}&\\
 \end{align*}
+\section{Absolute Convergence}
+\subsection{Definition}
+Let $\bf (U_n)$ a sequence, we say $\bf \sum U_n$ is absolutely convergent if $\bf \sum \left\lvert U_n \right\rvert$ is convergent.
+\subsubsection{Example}
+$\bf \sum \frac{(-1)^n}{n^2}$ is absolutely convergent because $\bf \sum \left\lvert \frac{(-1)^n}{n^2} \right\rvert = \sum \frac{1}{n^2}$ is convergent.
+\subsection{Proposition}
+Let $\bf \sum U_n$ a series, if $\bf \sum U_n$ is absolutely convergent then $\bf \sum U_n$ is convergent.
+\[\bf \sum \left\lvert U_n \right\rvert \text{ CVG } \begin{array}{l}  \implies \\ {\color{red}\centernot{\color{black}\Longleftarrow}} \end{array} \bf \sum U_n \text{ CVG.}\]
+\subsubsection{Counter Example}
+$\bf \sum \frac{(-1)^n}{n}$ is convergent BUT $\bf \sum \left\lvert \frac{(-1)^n}{n} \right\rvert = \sum \frac{1}{n}$ is divergent.
 \end{document}
