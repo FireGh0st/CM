@@ -200,7 +200,7 @@ $\implies \left\{ \begin{array}{r|r}
     \text{and } &\\
     \sum U_n \text{ P.T.S.}& \\
 \end{array} \right. $
-\subsection{D'Alembert's Rule}
+\subsection{D'Alembert's Rule (Ratio Test)}
 Let $\bf (U_n)$ be a strictly positive sequence such that:
 \[ \frac{U_{n+1}}{U_n} \xrightarrow[n \to +\infty]{} \ell \in \mathbb{R}_+\cup \{+\infty\} \]
 Then:
@@ -273,4 +273,90 @@ Let $\bf \sum U_n$ a series, if $\bf \sum U_n$ is absolutely convergent then $\b
 \[\bf \sum \left\lvert U_n \right\rvert \text{ CVG } \begin{array}{l}  \implies \\ {\color{red}\centernot{\color{black}\Longleftarrow}} \end{array} \bf \sum U_n \text{ CVG.}\]
 \subsubsection{Counter Example}
 $\bf \sum \frac{(-1)^n}{n}$ is convergent BUT $\bf \sum \left\lvert \frac{(-1)^n}{n} \right\rvert = \sum \frac{1}{n}$ is divergent.
+\subsection{Examples}
+\subsubsection{Example 1}
+\begin{itemize}
+    \item $\bf \sum \frac{(-1)^n}{n^\alpha}, \alpha \in \mathbb{R}$: 
+    \begin{itemize}
+        \item case $\alpha \leq 0$: $\bf \sum \frac{(-1)^n}{n^\alpha} \centernot{\xrightarrow[n \to +\infty]{}} 0$ (necessary condition) $\implies \bf \sum \frac{(-1)^n}{n^\alpha}$ DVG.
+        \item case $\alpha > 0$: $
+             \bf \sum \frac{1}{n^\alpha} > 0 \implies \bf \sum \frac{(-1)^n}{n^\alpha} \text{ is an alternating series}.\\[1em]
+            \begin{array}{l|c}
+             \bf \frac{1}{n^\alpha} \xrightarrow[n \to +\infty]{} 0\\[1em]
+             \bf \left\lvert \frac{1}{n^\alpha} \right\rvert = \frac{1}{n^\alpha} \text{ is decreasing}&
+        \end{array}$ $\overset{\text{A.S.S.C.}}{\implies} \bf \sum \frac{(-1)^n}{n^\alpha}$ CVG.
+    \end{itemize}
+\end{itemize}
+\paragraph{Proposition deduced from example 1}
+$\bf \forall \alpha > 0, \sum \frac{(-1)^n}{n^\alpha}$ is convergent.
+\subsubsection{Example 2}
+\begin{itemize}
+    \item $\bf \forall n \in \mathbb{N}, U_n = \frac{\sin(n)}{n^\alpha}$:
+    $\bf \left\lvert U_n \right\rvert = \frac{\left\lvert \sin(n) \right\rvert}{n^\alpha}, \implies 0 \leq \left\lvert U_n \right\rvert \leq \frac{1}{n^\alpha}$\\[1em]
+    \begin{align*}
+        \text{If } \bf \alpha > 1, &\text{ then } \sum \frac{1}{n^\alpha} \text{ CVG (Riemann }\alpha > 1\text{)}\\
+        &\text{ then } \sum \left\lvert U_n \right\rvert \text{ CVG (Comparison test)}\\
+        &\text{ then } \sum U_n \text{ Absolutely CVG (Proposition)}\\
+        &\text{ then } \sum U_n \text{ CVG (Proposition)}
+    \end{align*}
+
+\end{itemize}
+
+\newpage
+\section{Important Proof}
+\subsection{Series whose general term is positive}
+\fbox{
+\begin{minipage}{0.9\textwidth}   
+    \subsubsection{Theorem (Comparison rules)}
+    Consider two sequences $\bf (U_n)$ and $\bf (V_n)$.
+    \begin{enumerate}
+        \item If for all $n \in \mathbb{N}, u_n \leq v_n$, then
+        \begin{enumerate}
+            \item $\bf \sum v_n$ converges $\implies \sum u_n$ converges
+            \item $\bf \sum u_n$ diverges $\implies \sum v_n$ diverges
+        \end{enumerate}
+        If $\bf u_n \sim v_n$ then the series $\bf \sum u_n$ and $\bf \sum v_n$ have the same nature.
+    \end{enumerate}
+\end{minipage}}
+\paragraph{Remarks}
+\begin{itemize}[label={--}]
+    \item Property 1 remains true if the relation $\bf u_n \leq v_n$ satisfied only above a certain rank, instead of for all $n \in \mathbb{N}$.
+    That is, it is true if there exists  $n_0 \in \mathbb{N}$ such that
+    \[ \forall n \in \mathbb{N}, n \geq n_0 \implies u_n \leq v_n \]
+    \item Property 1 includes the case $u_n = o(v_n)$.  Indeed, in this case, the relation $\bf u_n \leq v_n$ is satisfied above a certain rank.
+\end{itemize}
+\paragraph{Proof}
+\begin{enumerate}
+    \item Let $\bf (S_n)$ denote the partial sums of $\bf \sum u_n$ and $\bf (T_n)$ the partial sums of $\bf \sum v_n$.
+    To start with, note that the sequences $\bf (S_n)$ and $\bf (T_n)$ are both increasing. Indeed, for all $n \in \mathbb{N}$,
+    \[ S_{n+1} - S_n = u_{n+1} \geq 0 \quad \text{ and } \quad T_{n+1} - T_n = v_{n+1} \geq 0 \]
+    Thus, we know that
+    \[ (S_n) \text{ converges } \Longleftrightarrow (S_n) \text{ is bounded above} \]
+    Furthermore, since for all $n \in \mathbb{N}$, $u_n \leq v_n$, we can write:
+    \[ \forall n \in \mathbb{N}, \quad S_n \leq T_n \]
+    Thus, if $\bf \sum v_n$ converges, then $\bf (T_n)$ is bounded.  It hence admits an upper bound $M$. Then for all $n \in \mathbb{N}$:
+    \[ S_n \leq T_n \leq M \]
+    and $M$ is also an upper bound of $\bf (S_n)$. The sequence $\bf (S_n)$ is hence bounded above and, since it is increasing, it converges. This proves the property (a).\\[1em]
+    Proving property (b) is now straightforward: it is the contrapositive of property (a).
+
+    \item Assume that $(u_n) \sim (v_n)$. Then there exists a sequence $(\epsilon_n)$ such that
+    \[ \forall n \in \mathbb{N}, u_n = v_n \times (1 + \epsilon_n) \quad \text{ and } \quad \epsilon_n \xrightarrow[n \to +\infty]{} 0 \]
+    Since $(\epsilon_n)$ converges to $0$, it remains between $-\frac{1}{2}$ and $\frac{1}{2}$ above a certain rank: there exists $n_0 \in \mathbb{N}$ such that
+    \begin{align*}
+        \forall n \in \mathbb{N}, n \geq n_0 &\implies -\frac{1}{2} \leq \epsilon_n \leq \frac{1}{2}\\
+        &\implies \frac{1}{2} \leq 1 + \epsilon_n \leq \frac{3}{2}\\
+        &\implies \frac{1}{2} v_n \leq u_n \leq \frac{3}{2} v_n
+    \end{align*}
+    If $\bf \sum u_n$ converges then, using property 1 and the relation $\frac{1}{2} v_n \leq u_n$, we know that $\bf \sum \frac{1}{2} v_n$ converges.
+    Thus, $\bf \sum v_n$ converges.\\[1em]
+
+    If $\bf \sum u_n$ diverges then, using property 1 and the relation $u_n \leq \frac{3}{2} v_n$, we know that $\bf \sum \frac{3}{2} v_n$ diverges.
+    Thus, $\bf \sum v_n$ diverges.    
+\end{enumerate}
+
+\fbox{
+\begin{minipage}{0.9\textwidth}   
+    \subsubsection{Theorem (Riemann series)}
+    Let $\alpha in \mathbb{R}$. The series $\sum \frac{1}{n^\alpha}$ converges if and only if $\alpha > 1$.
+\end{minipage}}
 \end{document}
