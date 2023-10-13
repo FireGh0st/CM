@@ -357,6 +357,198 @@ $\bf \forall \alpha > 0, \sum \frac{(-1)^n}{n^\alpha}$ is convergent.
 \fbox{
 \begin{minipage}{0.9\textwidth}   
     \subsubsection{Theorem (Riemann series)}
-    Let $\alpha in \mathbb{R}$. The series $\sum \frac{1}{n^\alpha}$ converges if and only if $\alpha > 1$.
+    Let $\alpha$ in $\mathbb{R}$. The series $\sum \frac{1}{n^\alpha}$ converges if and only if $\alpha > 1$.
 \end{minipage}}
+\paragraph{Some explanations before the proof:}
+Before the explicit proof, here are the main ideas we will use:
+\begin{enumerate}
+    \item We focus on the case $\alpha > 0$ (otherwise, $\frac{1}{n^\alpha}$ does not converge to $0$, hence the series diverges).
+    \item When $0 < \alpha \leq 1$, we try to lower-bound $\frac{1}{n^\alpha}$ by a positive sequence $\bf (v_n)$ such that $\sum v_n$ diverges.
+    And when $\alpha > 1$, we try to upper-bound $\frac{1}{n^\alpha}$ by a positive sequence $\bf (w_n)$ such that $\sum w_n$ converges.
+    \item In that purpose, we use the property that, since the function $t \mapsto \frac{1}{t^\alpha}$ decreases, we know that for all $n \geq 2$:
+    \[ \forall t \in [n-1, n], \frac{1}{t^\alpha} \geq \frac{1}{n^\alpha} \quad \text{ and } \quad \forall t \in [n, n+1], \frac{1}{n^\alpha} \geq \frac{1}{t^\alpha} \]
+    We can hence integrate the first inequality on $[n-1, n]$ and the second one on $[n, n+1]$:
+    \[\int_{n-1}^n \frac{1}{t^\alpha} \mathrm{d}t \geq \int_{n-1}^n \frac{1}{n^\alpha} \mathrm{d}t \quad \text{ and } \quad \int_n^{n+1} \frac{1}{n^\alpha} \mathrm{d}t \geq \int_n^{n+1} \frac{1}{t^\alpha} \mathrm{d}t\]
+    The function $t \mapsto \frac{1}{t^\alpha}$ is a constant function. Thus,
+    %int 1/n^a dt = [t/n^a]_n-1^n = 1/n^a
+    \[ \int_{n-1}^n \frac{1}{n^\alpha} \mathrm{d}t = \left[\frac{t}{n^\alpha}\right]_{n-1}^n = \frac{1}{n^\alpha} \quad \text{ and } \quad \int_n^{n+1} \frac{1}{n^\alpha} \mathrm{d}t = \left[\frac{t}{n^\alpha}\right]_n^{n+1} = \frac{1}{n^\alpha} \]
+    Finally, for all $n \geq 2$,
+    \[ \int_{n-1}^n \frac{1}{t^\alpha} \mathrm{d}t \geq \frac{1}{n^\alpha} \geq \int_n^{n+1} \frac{1}{t^\alpha} \mathrm{d}t \]
+    
+
+
+    \fbox{
+    \begin{minipage}{0.9\textwidth}   
+        \begin{center}
+            
+            \begin{tikzpicture}[scale=2]
+                %move all the tikz to the right
+                %fill the surface between the curves
+                \fill[gray!40, domain=0.5:1.5, variable=\x]
+                (0.5,0) -- plot (\x,{(1/(\x))/2}) -- (1.5,0) -- cycle;
+                \fill[gray!40, domain=0.5:1.5, variable=\x]
+                (0.5,0) -- plot (\x,{0.5}) -- (1.5,0) -- cycle;
+                %fill the surface bellow the red curves in the interval [0.5,1] hatch red
+                \fill[pattern=north east lines, pattern color=red, domain=0.5:1, variable=\x]
+                (0.5,0) -- plot (\x,{0.5}) -- (1,0) -- cycle;
+                \fill[pattern=grid, pattern color=red, domain=1:1.5, variable=\x]
+                (1,0) -- plot (\x,{0.5}) -- (1.5,0) -- cycle;
+                
+                \draw[blue, thick] plot[domain=0.5:1.5] (\x,{(1/(\x))/2}) node[right] {$y=\frac{1}{t^a}$};
+                \draw[red, thick] plot[domain=0.5:1.5] (\x,{0.5}) node[right, above] {$y=\frac{1}{n^a}$};
+                
+                \draw[->] (0,0) -- (2,0) node[right] {$t$};
+                \draw (0,0) -- (0,1) node[above] {};
+                
+                \draw[dashed] (0,0.5) -- (0.5,0.5);
+                \draw[thick] (0.5,0) -- (0.5,1);
+                \draw[thick] (1,0) -- (1,0.5);
+                \draw[thick] (1.5,0) -- (1.5,0.5);
+                
+                \node[below] at (0.5,0) {\tiny$n-1$};
+                \node[below] at (1,0) {\tiny$n$};
+                \node[below] at (1.5,0) {\tiny$n+1$};
+                \node[left] at (0,0.5) {$\frac{1}{n^a}$};
+            \end{tikzpicture}
+        \end{center}
+    \end{minipage}}
+    \item To compute the integral of $\frac{1}{t^\alpha}$: a primitive function $F$ is defined on $\mathbb{R}^*_+$ by:
+    \[ F(t) = \frac{t^{-\alpha+1}}{-\alpha+1} \text{ (case } \alpha \neq 1 \text{)} \quad \text{ or } \quad F(t) = \ln(t) \text{ (case } \alpha = 1 \text{)} \]
+\end{enumerate}
+\paragraph{Theorem's proof}
+Let $\alpha \in \mathbb{R}$ and the series $\sum \frac{1}{n^\alpha}$.
+
+\begin{enumerate}
+    \item If $\alpha \leq 0$, then $\frac{1}{n^\alpha} = n^{-\alpha}$ with $-\alpha \geq 0$. Thus,  $\left(\frac{1}{n^\alpha}\right)$ does not converge to $0$ and the series diverges.
+    \item If $0 < \alpha \leq 1$: since the function $t \mapsto \frac{1}{t^\alpha}$ decreases on $\mathbb{R}^*_+$, we know that for all $n \geq 1$:
+    \[ \forall t \in [n, n+1], \frac{1}{n^\alpha} \geq \frac{1}{t^\alpha} \]
+    By integrating this inequality on $[n, n+1]$, we get: $\int_n^{n+1} \frac{1}{n^\alpha} \mathrm{d}t \geq \int_n^{n+1} \frac{1}{t^\alpha} \mathrm{d}t$.\\[0.5em]
+    The first integral is $\left[\frac{t}{n^\alpha}\right]_n^{n+1} = \frac{1}{n^\alpha}$.\\[1em]
+    If $F$ denotes a primitive function of $\frac{1}{t^\alpha}$, we hence get:
+    \[ \forall n \geq 1, \frac{1}{n^\alpha} \geq F(n+1) - F(n) \geq 0 \]
+
+    Since both series $\sum \frac{1}{n^\alpha}$ and $\sum \left(F(n+1) - F(n)\right)$ have positive terms, we can use comparison theorem. 
+    Let us prove that the serie $\sum \left(F(n+1) - F(n)\right)$ diverges: the latter is a telescoping series, it hence has the same nature as the sequence $(F(n))$.
+
+    If $\alpha < 1$, then for all $n \in \mathbb{N}^*$, $F(n) = \frac{n^{1-\alpha}}{1-\alpha}$ with $1-a > 0$. The sequence $(F(n))$ hence diverges to $+\infty$, that is, $\sum \left(F(n+1) - F(n)\right)$ diverges.\\[0.5em]
+
+    If $\alpha = 1$, then for all $n \in \mathbb{N}^*$, $F(n) = \ln(n)$ and the sequence $(F(n))$ diverges to $+\infty$. Here also, $\sum \left(F(n+1) - F(n)\right)$ diverges.\\[0.5em]
+    
+    Finally, for all $\alpha$ such that $0 < \alpha \leq 1$, the series $\sum \left(F(n+1) - F(n)\right)$ diverges. Using comparison theorem, it results that $\sum \frac{1}{n^\alpha}$ diverges too.
+
+    \item If $\alpha > 1$: since the function $t \mapsto \frac{1}{t^\alpha}$ decreases on $\mathbb{R}^*_+$, we know that for all $n \geq 2$:
+    \[ \forall t \in [n-1, n], \frac{1}{n^\alpha} \leq \frac{1}{n^\alpha} \]
+
+    By integrating this inequality on $[n-1, n]$, we get: $\int_{n-1}^n \frac{1}{n^\alpha} \mathrm{d}t \leq \int_{n-1}^n \frac{1}{t^\alpha} \mathrm{d}t$.\\[0.5em]
+    The first integral is $\left[\frac{t}{n^\alpha}\right]_{n-1}^n = \frac{1}{n^\alpha}$.\\[1em]
+    If $F$ denotes a primitive function of $\frac{1}{t^\alpha}$, we hence get:
+    \[ \forall n \geq 1, 0 \leq \frac{1}{n^\alpha} \leq F(n) - F(n-1) \]
+
+    Since both series $\sum \frac{1}{n^\alpha}$ and $\sum \left(F(n) - F(n-1)\right)$ have positive terms, we can use comparison theorem.
+    Let us prove that the serie $\sum \left(F(n) - F(n-1)\right)$ converges: the latter is a telescoping series, it hence has the same nature as the sequence $(F(n))$.\\[0.5em]
+
+    But $F(n) = \frac{n^{1-\alpha}}{1-\alpha} = -\frac{1}{(1-\alpha)} \times \frac{1}{n^{\alpha-1}}$ with $\alpha - 1 > 0$.\\
+
+    Thus, the sequence $(F(n))$ converges to $0$ and the telescoping series $\sum \left(F(n) - F(n-1)\right)$ converges.\\[0.5em]
+
+    Using comparison theorem, it results that $\sum \frac{1}{n^\alpha}$ converges too.
+\end{enumerate}
+\subsection{Series whose general term has a non-constant sign}
+\fbox{
+\begin{minipage}{0.9\textwidth}   
+    \subsubsection{Theorem (Absolute convergence)}
+    If a series $\sum u_n$ converges absolutely, then it converges.
+\end{minipage}}\\[1em]
+{\color{blue} Reminder: a series $\sum u_n$ converges absolutely if $\sum \left\lvert u_n \right\rvert$ converges.}
+\paragraph{Proof}
+\noindent Consider a series $\sum u_n$ converging absolutely. We hence assume that $\sum \left\lvert u_n \right\rvert$ converges.\\[0.5em]
+Let us define the two series $(u_n^+)$ and $(u_n^-)$ by:
+\[ \forall n \in \mathbb{N}, \quad u_n^+ = \begin{cases}
+    u_n & \text{ if } u_n \geq 0\\
+    0 & \text{ otherwise}
+\end{cases} \quad \text{ and } \quad u_n^- = \begin{cases}
+    -u_n & \text{ if } u_n \leq 0\\
+    0 & \text{ otherwise}
+\end{cases} \]
+
+\noindent These sequences are both positive $u_n = u_n^+ - u_n^-$. Furthermore, 
+\begin{itemize}
+    \item[--] $\forall n \in \mathbb{N}, 0 \leq u_n^+ \leq \left\lvert u_n \right\rvert$ and $\sum \left\lvert u_n \right\rvert$ converges, so $\sum u_n^+$ converges.
+    \item[--] $\forall n \in \mathbb{N}, 0 \leq u_n^- \leq \left\lvert u_n \right\rvert$ and $\sum \left\lvert u_n \right\rvert$ converges, so $\sum u_n^-$ converges.
+\end{itemize}
+Thus, $\sum u_n = \sum \left(u_n^+ - u_n^-\right)$ is the sum of two convergent series. It is hence convergent.\\[1em]
+
+\fbox{
+\begin{minipage}{0.9\textwidth}   
+    \subsubsection{Theorem (Leibniz's rule)}
+    Let $(u_n)$ be an alternating sequence. If $(\left\lvert u_n \right\rvert)$ is decreasing and converges to $0$, then:
+    \begin{enumerate}
+        \item $\sum u_n$ converges.
+        \item The remainder $(R_n)$ of the series satisfy to: $\forall n \in \mathbb{N}, \left\lvert R_n \right\rvert \leq \left\lvert u_{n+1} \right\rvert$.
+    \end{enumerate}
+\end{minipage}}
+
+\paragraph{Reminders}
+the theorem's proof relies on the notion of adjacent sequences and on two properties seen during the chapter 5 (sequences) the previous year:
+\begin{enumerate}
+    \item Two sequences $(u_n)$ and $(v_n)$ are adjacent if they satisfy the conditions:
+    \begin{itemize}
+        \item[--] One of them is increasing and the other one is decreasing.
+        \item[--] The sequence $(u_n - v_n)$ converges to $0$.
+    \end{itemize}
+    \item Properties of adjacent sequences: if two sequences $(u_n)$ and $(v_n)$ are adjacent, then:
+    \begin{itemize}
+        \item[--] Both converge. Furthermore, they admit an \textbf{identical} limit $\ell$.
+        \item[--] If $(u_n)$ is the increasing sequence and $(v_n)$ the decreasing one, then:
+        \[ \forall n \in \mathbb{N}, \quad u_n \leq u_{n+1} \leq \ell \leq v_{n+1} \leq v_n \]
+    \end{itemize}
+    \item Property about subsequences: consider a sequence $(u_n)$ such that the subsequences $(u_{2n})$ and $(u_{2n+1})$ both converge to an \textbf{identical} limit $\ell$. Then, $(u_n)$ converges to $\ell$.
+\end{enumerate}
+
+\paragraph{Proof of the theorem}
+Let $(u_n)$ be an alternating sequence. Then there exists a positive sequence $(a_n)$ such that:
+\[(u_n) = ((-1)^n \times a_n) \quad \text{ or } \quad (u_n) = (-(-1)^{n} \times a_n)\]
+For the proof, we can assume that we are in the first case $(u_n) = ((-1)^n \times a_n)$. If not, just replace $(u_n)$ by $(-u_n)$. 
+The positive sequence $(a_n)$ is in fact the sequence $(\left\lvert u_n \right\rvert)$: the theorem hypothesis state that it decreases and converges to $0$.\\[0.5em]
+Let $(S_n)$ be the partial sums of $\sum u_n$: for all $n \in \mathbb{N}$, 
+\[S_n = a_0 - a_1 + a_2 - a_3 + \cdots + (-1)^n a_n\]
+To start with, let us prove that the sequences $(S_{2n})$ and $(S_{2n+1})$ are adjacent.
+\begin{enumerate}
+    \item Monotony of $(S_{2n})$: this subsequence contains the terms of even ranks. The term following $S_{2n}$ is hence $S_{2(n+1)} = S_{2n+2}$. Thus, for all $n \in \mathbb{N}$:
+    \[ \begin{cases}
+           \qquad S_{2n} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n}\\
+            \quad S_{2(n+1)} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n} - a_{2n+1} + a_{2n+2}\\
+        \hline
+        S_{2(n+1)} - S_{2n} = - a_{2n+1} + a_{2n+2}
+    \end{cases}\]
+    Since $(a_n)$ is decreasing, $-a_{2n+1} + a_{2n+2}$ is negative. The sequence $(S_{2n})$ is hence decreasing.
+    \item Monotony of $(S_{2n+1})$: this subsequence contains the terms of odd ranks. The term following $S_{2n+1}$ is hence $S_{2(n+1)+1} = S_{2n+3}$. Thus, for all $n \in \mathbb{N}$:
+    \[ \begin{cases}
+           \qquad S_{2n+1} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n} - a_{2n+1}\\
+            \quad S_{2(n+1)+1} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n} - a_{2n+1} + a_{2n+2} - a_{2n+3}\\
+        \hline
+        S_{2(n+1)+1} - S_{2n+1} = a_{2n+2} - a_{2n+3}
+    \end{cases}\]
+    Since $(a_n)$ is decreasing, $a_{2n+2} - a_{2n+3}$ is positive. The sequence $(S_{2n+1})$ is hence increasing.
+    \item Study of $S_{2n+1} - S_{2n}$: for all $n \in \mathbb{N}$,
+    \[ \begin{cases}
+        \qquad S_{2n} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n}\\
+         \quad S_{2n+1} = a_0 - a_1 + a_2 - a_3 + \cdots + a_{2n} - a_{2n+1}\\
+     \hline
+     S_{2n+1} - S_{2n} = -a_{2n+1}
+ \end{cases}\]
+ Since $(a_n)$ converges to $0$, $(S_{2n+1} - S_{2n})$ converges to $0$ too.\\
+ 
+ We hence proved that $(S_{2n})$ and $(S_{2n+1})$ are adjacent. From this, we know that they both converge and admit an identical limit $\ell$. The we get:
+ \[ \begin{rcases}
+    S_{2n} \xrightarrow[n \to +\infty]{} \ell\\
+    S_{2n+1} \xrightarrow[n \to +\infty]{} \ell
+ \end{rcases} \implies S_n \xrightarrow[n \to +\infty]{} \ell\]
+ This prove that $(S_n)$ converges, that is, $\sum u_n$ converges.\\[0.5em]
+ Now let us prove that for all n $\in \mathbb{N}$, $\left\lvert R_n \right\rvert \leq \left\lvert u_{n+1} \right\rvert$: the sequences $(S_{2n})$ and $(S_{2n+1})$ being adjacent, we know that for all $n \in \mathbb{N}$:
+ \[ S_{2n+1} \leq S_{2n+3} \leq \ell \leq S_{2n+2} \leq S_{2n} \]
+ Thus, $\left\lvert R_{2n} \right\rvert = S_{2n} - \ell \leq S_{2n} - S_{2n+1} = u_{2n+1}$\\[0.5em]
+ and $\left\lvert R_{2n+1} \right\rvert = \ell - S_{2n+1} \leq S_{2n+2} - S_{2n+1} = u_{2n+2}$.\\[0.5em]
+ Thus, for all $n \in \mathbb{N}$, $\left\lvert R_n \right\rvert \leq \left\lvert u_{n+1} \right\rvert$.
+\end{enumerate}
 \end{document}
