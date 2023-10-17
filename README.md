@@ -20,6 +20,7 @@ Generic mathematics lessons for students of engineering or prep schools
 ### Second year
 
 - [ ] [Chapter 1: Numerical Series](https://github.com/FireGh0st/CM/blob/main/Math/Numerical%20Series.pdf)
+- [ ] [Chapter 2: Generating Function](https://github.com/FireGh0st/CM/blob/main/Math/Generating%20Function.pdf)
 
 # Special thanks
 A big thank you to "Monsieur" (La__plume) who reads, corrects my lessons and helps me in latex

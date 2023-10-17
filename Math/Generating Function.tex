@@ -1,0 +1,116 @@
+\documentclass[notitlepage]{math}
+\usepackage{lipsum}
+\usetikzlibrary{patterns,positioning, decorations, decorations.pathreplacing}
+
+\title{Generating Function Chap. 2} %Titre du fichie
+\author{FireGhost} %Auteur du fichier
+
+
+\begin{document}
+\titre{Chapter 2: Generating Function} %Titre du fichier .pdf
+\UE{Generating Function} %Nom de la UE
+
+\fairetitre
+\fairemarges
+% subsubsubsection
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+
+
+\newcommand{\minus}{\scalebox{0.75}[1.0]{$-$}} % Minus sign
+
+\section{Preamble}
+    This chapter is about generating function in probability.
+    To understand this chapter, you need to have a good understanding of the chapter 4 of the first year about probability.
+    This chapter is also related to the next chapter about Power Series.
+    You can here a little summary of the chapter 4 of the first year:
+    \subsection{Reminder}
+        \subsubsection{Definition}
+            A random variable is a function from a probability space to the real numbers.\\
+            $X$ a random variable is a function: \\
+            \begin{tikzpicture}[node distance=1mm]
+                \node (center) at (0,0) {};
+                \node (functionName) at (5, 1.5) {$X$:};
+                \node[above right = -0.3cm and 0cm of functionName] (domain) {$\Omega$};
+                \node[right = 1cm of domain] (codomain) {$\mathbb{R}$};
+                \node[below = 2mm of domain] (element) {$w$};
+                \node at (element-|codomain) (image) {$X(w)$};
+                \draw[->] (domain) -- (codomain);
+                \draw[|->] (element) -- (image);
+            \end{tikzpicture}\\
+            We denote the range of $X$ by $X(\Omega)$.
+        \subsubsection{Expectation}
+            Let $X$ be a random variable, we define the expectation of $X$ by:
+            \begin{align*}
+                E(X) &= \sum_{k \in X(\Omega)} P(X = k) \cdot k\\
+                E(g(x)) &= \sum_{k \in X(\Omega)} P(X = k) \cdot g(k)
+            \end{align*}
+        \subsubsection{Variance}
+            Let $X$ be a random variable, we define the variance of $X$ by:
+            \begin{align*}
+                Var(X) &= E((X - E(X))^2)\\
+                Var(X) &= E(X^2) - E(X)^2
+            \end{align*}
+
+
+\section{Generating Function}
+The Generating Function of a discrete random variable contains all the distribution data. Thus we can in particular compute its Expected Value and Variance.
+\subsection{Definition}
+
+Let $X$ be a finite integer random variable, with $X(\Omega) = \llbracket 0,n \rrbracket$, we call the Generating Function of the following polynomial:\\
+\begin{tikzpicture}[node distance=1mm]
+    \node (center) at (0,0) {};
+    \node (functionName) at (5, 1) {$G_X$:};
+    \node[above right = -0.3cm and 0cm of functionName] (domain) {$\mathbb{R}$};
+    \node[right = 2cm of domain] (codomain) {$\mathbb{R}$};
+    \node[below = 5mm of domain] (element) {$t$};
+    \node at (element-|codomain) (image) {$\sum\limits_{k=0}^n $};
+    \node[right = -0.1cm of image] (image2) {$P(X = k) \cdot t^k$ = $E(t^X) $};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image);
+\end{tikzpicture}
+
+\subsection{Remark}
+
+Let $X$ and $Y$ be two Finite Integer Random Variables (F.I.R.V.) such that $G_X = G_Y$: 
+\begin{align*}
+    &\qquad X (\Omega) = Y (\Omega) = \llbracket 0,n \rrbracket\\
+    &\implies \forall k \in \llbracket 0,n \rrbracket, P(X = k) = P(Y = k)\\
+    &\implies X \text{ and } Y \text{ have the same distribution}
+\end{align*} 
+
+\subsection{Example}
+Roll a dice with $X$ is "pick a 6" and $Y$ is "pick a 1".\\
+$X$ and $Y$ have the same distribution $=\frac{1}{6}$ but $X \neq Y$.\\
+
+
+Example 2: Bernoulli random variable (A random variable with a Bernoulli distribution)\\
+$\begin{array}{l|l r}
+    
+    & X(\Omega) = \{0,1\}\\
+    X \sim B(p) \implies & P(X = 0) = 1 - p&, p \in ]0,1[\\
+    & P(X = 1) = p\\
+\end{array}$
+\\ [\bigskipamount]
+Then we have:\\
+\begin{tikzpicture}[node distance=1mm]
+    \node (center) at (0,0) {};
+    \node (functionName) at (3, 1) {$G_X$:};
+    \node[above right = -0.3cm and 0cm of functionName] (domain) {$\mathbb{R}$};
+    \node[right = 2cm of domain] (codomain) {$\mathbb{R}$};
+    \node[below = 5mm of domain] (element) {$t$};
+    \node at (element-|codomain) (image) {$\sum\limits_{k=0}^1 $};
+    \node[right = -0.1cm of image] (image2) {$P(X = k) \cdot t^k$};
+    \node[right = -0.1cm of image2] (image3) {$= P(X = 0) \cdot t^0 + P(X = 1) \cdot t^1$};
+    \node[below = 1mm and of image3] (image4) {$ = (1-p) \cdot t^0 + p \cdot t^1$};
+    \draw[->] (domain) -- (codomain);
+    \draw[|->] (element) -- (image);
+\end{tikzpicture}\\
+
+
+
+\end{document}
